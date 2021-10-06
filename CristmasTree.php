@@ -16,48 +16,34 @@
         $num = intval($_POST["num"]);
 
         $count = $num;
-        $espacio1 = true;
-        $espacio2 = true;
 
-        for ( $i=0; $i<$num; $i++ ) {
+        for ( $i=1; $i<=$num; $i++ ) {
+
+            for ($j=0; $j<$count; $j++) {
+
+                echo "<span style='color:skyblue'>*";
+
+            }
 
             for ($j=0; $j<$i; $j++) {
 
-                if ($espacio1==true){
-                    for( $x=0;$x < $count ; $x++ ) {
+                echo "<span style='color:black'>*";
 
-                        echo "z";
-
-                    }
-
-                    $espacio1 = false;
+                if ($j >= 1){
+                    echo "<span style='color:black'>*";
                 }
-
-                echo "*";
 
             }
-            for ($z=0; $z<$i; $z++) {
 
-                echo "*";
-                if ($espacio2==true) {
-                    for ($y = 0; $y < $count; $y++) {
+            for ($j=0; $j<$count; $j++) {
 
-                        echo "z";
-
-                    }
-
-                    $espacio2 = false;
-                }
+                echo "<span style='color:skyblue'>*";
 
             }
 
             echo "<br/>";
             $count--;
-            $espacio1 = true;
-            $espacio2 = true;
         }
-
-        //<span style='color:skyblue'>
 
     }
     ?>
