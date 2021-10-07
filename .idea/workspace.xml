@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dcc43ea-acc8-4b13-b43d-1e844bb7ea7a" name="Changes" comment="" />
+    <list default="true" id="6dcc43ea-acc8-4b13-b43d-1e844bb7ea7a" name="Changes" comment="php" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +14,11 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpDebugGeneral" listening_started="true" />
@@ -30,6 +35,7 @@
   <component name="PhpWebServerValidation" deployment_server_id="5f05cb94-0bbb-4920-9d61-1db45d99b338" path_to_validation_script="C:\xampp\htdocs" selected_validation_type="LOCAL" web_path_to_validation_script="http://127.0.0.1/" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectId" id="1zAH17TaBQJsaBDOgQQydbFbRRy" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -87,8 +93,23 @@
       <workItem from="1633586294621" duration="134000" />
       <workItem from="1633586445033" duration="132000" />
       <workItem from="1633586591703" duration="284000" />
-      <workItem from="1633586935285" duration="2494000" />
+      <workItem from="1633586935285" duration="2844000" />
     </task>
+    <task id="LOCAL-00001" summary="php">
+      <created>1633589743986</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1633589743986</updated>
+    </task>
+    <task id="LOCAL-00002" summary="php">
+      <created>1633589754895</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1633589754895</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,10 +127,32 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="php" />
+    <option name="LAST_COMMIT_MESSAGE" value="php" />
+  </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="NONE" type="php-line-method">
+          <url>file://$PROJECT_DIR$/NumerosPerfectos.php</url>
+          <line>15</line>
+          <properties>
+            <option name="className" value="" />
+            <option name="methodName" value="\getDivisors" />
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="NONE" type="php">
+          <url>file://$PROJECT_DIR$/NumerosPerfectos.php</url>
+          <line>18</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="PhpLocalRunConfigurationType">
-        <watch expression="$_SERVER[&quot;argc&quot;]" />
+        <watch expression="$_SERVER[&quot;argv&quot;][0]" />
       </configuration>
     </watches-manager>
   </component>
