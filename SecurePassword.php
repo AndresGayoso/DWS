@@ -21,7 +21,8 @@
             $key = chr($key);
             $letras++;
         }
-        echo $letras;
+
+
 
     }
 
