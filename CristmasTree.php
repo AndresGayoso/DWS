@@ -12,8 +12,8 @@
 </form>
 <div style="background-color: skyblue; width:min-content">
     <?php
-    if (isset($_POST["num"])) {
-        $num = intval($_POST["num"]);
+
+    function ChristmasTree($num){
 
         $count = $num;
 
@@ -44,6 +44,14 @@
             echo "<br/>";
             $count--;
         }
+
+    }
+
+
+    if (isset($_POST["num"])) {
+        $num = intval($_POST["num"]);
+
+        ChristmasTree($num);
 
     }
     ?>
