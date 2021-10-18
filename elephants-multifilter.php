@@ -3,13 +3,13 @@ $contents = file_get_contents("https://dawsonferrer.com/allabres/apis_solutions/
 $elephants = json_decode($contents, true);
 
 function getSortedElephantsByNumber($elephants){
-    //array que se utiliza de apoyo para ordenar
 
+    //array que se utiliza de apoyo para ordenar
     $ordenado = array();
 
     //bucle que ordena el array multidimensional
     for ($i = 0; $i < count($elephants);$i++){
-        //bucle que va ordenado los arrays que hay dentro
+        //bucle que va ordenado los arrays que hay dentro por numero(ascendente)
         for ($x = 0; $x < count($elephants);$x++){
             if (intval($elephants[$i]["number"]) < intval($elephants[$x]["number"])){
                 $ordenado = $elephants[$i];
@@ -23,16 +23,13 @@ function getSortedElephantsByNumber($elephants){
 }
 
 function getSortedElephantsByBirth($elephants){
-    //TODO: Return an array of elephants sorted by it's birth date (ascending order).
-    //NOTES 1: You receive a elephants multidimensional array, you can view it's content with var_dump() function.
-    //NOTES 2:You CAN'T use any sorting PHP built-in function.
-    //array que se utiliza de apoyo para ordenar
 
+    //array que se utiliza de apoyo para ordenar
     $ordenado = array();
 
     //bucle que ordena el array multidimensional
     for ($i = 0; $i < count($elephants);$i++){
-        //bucle que va ordenado los arrays que hay dentro
+        //bucle que va ordenado los arrays que hay dentro por fecha de nacimiento(ascendente)
         for ($x = 0; $x < count($elephants);$x++){
             if (($elephants[$i]["dob"]) < ($elephants[$x]["dob"])){
                 $ordenado = $elephants[$i];
@@ -47,14 +44,13 @@ function getSortedElephantsByBirth($elephants){
 }
 
 function getSortedElephantsByHavingImage($elephants){
-    //TODO: Return an array of elephants sorted depending on whether they have an image (those who have an image go first).
-    //NOTES 1: You receive a elephants multidimensional array, you can view it's content with var_dump() function.
-    //NOTES 2:You CAN'T use any sorting PHP built-in function.
+
+    //array que se utiliza de apoyo para ordenar
     $ordenado = array();
 
     //bucle que ordena el array multidimensional
     for ($i = 0; $i < count($elephants);$i++){
-        //bucle que va ordenado los arrays que hay dentro
+        //bucle que va ordenado los arrays que hay dentro si tienen imagen van primero
         for ($x = 0; $x < count($elephants);$x++){
             if ($elephants[$i]["image"] != "https://elephant-api.herokuapp.com/pictures/missing.jpg"){
                 $ordenado = $elephants[$i];
@@ -68,19 +64,21 @@ function getSortedElephantsByHavingImage($elephants){
 }
 
 if(isset($_GET["sortingCriteria"])) {
-    //TODO: Logic to call a function depending on the sorting criteria.
+    //Si esta seleccionado la variable numero
     if ($_GET["sortingCriteria"] == "number"){
         echo ('<br>');
         echo ('<pre>');
         var_dump(getSortedElephantsByNumber($elephants));
         echo ('</pre>');
     }
+    //Si esta seleccionado la variable año
     if ($_GET["sortingCriteria"] == "birth"){
         echo ('<br>');
         echo ('<pre>');
         var_dump(getSortedElephantsByBirth($elephants));
         echo ('</pre>');
     }
+    //Si esta seleccionado la variable imagen
     if ($_GET["sortingCriteria"] == "image"){
         echo ('<br>');
         echo ('<pre>');
