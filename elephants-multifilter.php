@@ -26,18 +26,68 @@ function getSortedElephantsByBirth($elephants){
     //TODO: Return an array of elephants sorted by it's birth date (ascending order).
     //NOTES 1: You receive a elephants multidimensional array, you can view it's content with var_dump() function.
     //NOTES 2:You CAN'T use any sorting PHP built-in function.
+    //array que se utiliza de apoyo para ordenar
+
+    $ordenado = array();
+
+    //bucle que ordena el array multidimensional
+    for ($i = 0; $i < count($elephants);$i++){
+        //bucle que va ordenado los arrays que hay dentro
+        for ($x = 0; $x < count($elephants);$x++){
+            if (($elephants[$i]["dob"]) < ($elephants[$x]["dob"])){
+                $ordenado = $elephants[$i];
+                $elephants[$i] = $elephants[$x];
+                $elephants[$x] = $ordenado;
+            }
+        }
+    }
+    //Nos devuelve el array ordenado
+    return $elephants;
+
 }
 
 function getSortedElephantsByHavingImage($elephants){
     //TODO: Return an array of elephants sorted depending on whether they have an image (those who have an image go first).
     //NOTES 1: You receive a elephants multidimensional array, you can view it's content with var_dump() function.
     //NOTES 2:You CAN'T use any sorting PHP built-in function.
+    $ordenado = array();
+
+    //bucle que ordena el array multidimensional
+    for ($i = 0; $i < count($elephants);$i++){
+        //bucle que va ordenado los arrays que hay dentro
+        for ($x = 0; $x < count($elephants);$x++){
+            if ($elephants[$i]["image"] != "https://elephant-api.herokuapp.com/pictures/missing.jpg"){
+                $ordenado = $elephants[$i];
+                $elephants[$i] = $elephants[$x];
+                $elephants[$x] = $ordenado;
+            }
+        }
+    }
+    //Nos devuelve el array ordenado
+    return $elephants;
 }
 
-if(isset($_GET["sortingCriteria"])){
+if(isset($_GET["sortingCriteria"])) {
     //TODO: Logic to call a function depending on the sorting criteria.
+    if ($_GET["sortingCriteria"] == "number"){
+        echo ('<br>');
+        echo ('<pre>');
+        var_dump(getSortedElephantsByNumber($elephants));
+        echo ('</pre>');
+    }
+    if ($_GET["sortingCriteria"] == "birth"){
+        echo ('<br>');
+        echo ('<pre>');
+        var_dump(getSortedElephantsByBirth($elephants));
+        echo ('</pre>');
+    }
+    if ($_GET["sortingCriteria"] == "image"){
+        echo ('<br>');
+        echo ('<pre>');
+        var_dump(getSortedElephantsByHavingImage($elephants));
+        echo ('</pre>');
+    }
 }
-
 ?>
 
 <html lang="es">
@@ -53,7 +103,7 @@ if(isset($_GET["sortingCriteria"])){
         }
 
         body {
-            background: #111 !important;
+            background: white !important;
         }
 
         .card {
@@ -126,7 +176,6 @@ if(isset($_GET["sortingCriteria"])){
         //TODO: Logic to print the elephants cards.
         //NOTES 1: You can copy the markup language from the solution deployment.
         ?>
-
     </div>
 </div>
 </body>

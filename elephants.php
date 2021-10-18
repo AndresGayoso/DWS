@@ -67,6 +67,9 @@ function getSortedElephantsByNumber($elephants){
     <tbody>
     <?php
     //bucle para completar la tabla con sus valores
+
+    $array = getSortedElephantsByNumber($elephants);
+
     for ($i = 0; $i < count($elephants);$i++){
         echo '<tr>';
         //desordenada
@@ -81,13 +84,13 @@ function getSortedElephantsByNumber($elephants){
         echo '</td>';
         //ordenada
         echo '<td>';
-        echo getSortedElephantsByNumber($elephants)[$i]['number'];
+        echo $array[$i]['number'];
         echo '</td>';
         echo '<td>';
-        echo getSortedElephantsByNumber($elephants)[$i]['name'];
+        echo $array[$i]['name'];
         echo '</td>';
         echo '<td>';
-        echo getSortedElephantsByNumber($elephants)[$i]['species'];
+        echo $array[$i]['species'];
         echo '</td>';
         echo '</tr>';
     }
