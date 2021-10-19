@@ -5,7 +5,7 @@ $elephants = json_decode($contents, true);
 function getSortedElephantsByNumber($elephants){
 
     //array que se utiliza de apoyo para ordenar
-    $ordenado = array();
+    global $ordenado;
 
     //bucle que ordena el array multidimensional
     for ($i = 0; $i < count($elephants);$i++){
@@ -23,9 +23,6 @@ function getSortedElephantsByNumber($elephants){
 }
 
 function getSortedElephantsByBirth($elephants){
-
-    //array que se utiliza de apoyo para ordenar
-    $ordenado = array();
 
     //bucle que ordena el array multidimensional
     for ($i = 0; $i < count($elephants);$i++){
@@ -45,9 +42,6 @@ function getSortedElephantsByBirth($elephants){
 
 function getSortedElephantsByHavingImage($elephants){
 
-    //array que se utiliza de apoyo para ordenar
-    $ordenado = array();
-
     //bucle que ordena el array multidimensional
     for ($i = 0; $i < count($elephants);$i++){
         //bucle que va ordenado los arrays que hay dentro si tienen imagen van primero
@@ -66,24 +60,21 @@ function getSortedElephantsByHavingImage($elephants){
 if(isset($_GET["sortingCriteria"])) {
     //Si esta seleccionado la variable numero
     if ($_GET["sortingCriteria"] == "number"){
-        echo ('<br>');
-        echo ('<pre>');
-        var_dump(getSortedElephantsByNumber($elephants));
-        echo ('</pre>');
+
+        $array = getSortedElephantsByNumber($elephants);
+
     }
     //Si esta seleccionado la variable año
-    if ($_GET["sortingCriteria"] == "birth"){
-        echo ('<br>');
-        echo ('<pre>');
-        var_dump(getSortedElephantsByBirth($elephants));
-        echo ('</pre>');
+    elseif ($_GET["sortingCriteria"] == "birth"){
+
+        $array = getSortedElephantsByBirth($elephants);
+
     }
     //Si esta seleccionado la variable imagen
-    if ($_GET["sortingCriteria"] == "image"){
-        echo ('<br>');
-        echo ('<pre>');
-        var_dump(getSortedElephantsByHavingImage($elephants));
-        echo ('</pre>');
+    elseif ($_GET["sortingCriteria"] == "image"){
+
+       $array = getSortedElephantsByHavingImage($elephants);
+
     }
 }
 ?>
@@ -169,11 +160,36 @@ if(isset($_GET["sortingCriteria"])) {
 </nav>
 <div class="container mx-auto mt-4 custom">
     <div class="row">
-
         <?php
-        //TODO: Logic to print the elephants cards.
-        //NOTES 1: You can copy the markup language from the solution deployment.
+        for($j=0;$j<count($elephants);$j++){
+            echo "<div class='col-md-4'>";
+            echo "<div class='card' style='width: 18rem;'>";
+            echo '<img class="card-img-top" src="'.$array[$j]["image"].'">';
+            echo "<div class='card-body'>";
+            echo "<h5 class='card-title'>";
+            echo $array[$j]['number'].' - '.$array[$j]['name'];
+            echo "</h5>";
+            echo "<h6 class='card-subtitle mb-2 text-muted'>";
+            echo $array[$j]['species'];
+            echo "</h6>";
+            echo "<h6 class='card-subtitle mb-2 text-muted'>";
+            echo $array[$j]['dob'];
+            echo "</h6>";
+            echo "<p class='card-text'>";
+            echo $array[$j]['note'];
+            echo "</p>";
+            echo '<a class="btn mr-2" href="'.$array[$j]["wikilink"].'" target="_blank">';
+            echo "<i class='fas fa-link'></i>";
+            echo "Visit elephant";
+
+            echo "</a>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+
+        }
         ?>
+        </div>
     </div>
 </div>
 </body>
