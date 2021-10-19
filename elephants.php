@@ -69,7 +69,6 @@ function getSortedElephantsByNumber($elephants){
     //bucle para completar la tabla con sus valores
 
     $array = getSortedElephantsByNumber($elephants);
-
     for ($i = 0; $i < count($elephants);$i++){
         echo '<tr>';
         //desordenada
