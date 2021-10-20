@@ -42,3 +42,4 @@ echo ("<pre>");
 var_dump(mapCities($cities,$countries));
 echo ("</pre>");
 
+
