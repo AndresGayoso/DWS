@@ -2,10 +2,10 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="d949f2b0-3b46-4760-95b8-7a138c229ffe" name="server" url="http://localhost/Examen">
+      <webServer id="3878e42c-b8a5-4ed3-b695-273da0a90758" name="server" url="http://localhost/Examen">
         <fileTransfer mountedRoot="$PROJECT_DIR$" accessType="MOUNT" port="0" />
       </webServer>
-      <webServer id="a80a5ff2-3861-4bc7-8b1f-772186cbe7a8" name="ftp" url="http://ftp.dawsonferrer.com">
+      <webServer id="51106c8e-9c4a-42af-9fa6-05570530dcac" name="examen" url="http://ftp.dawsonferrer.com">
         <fileTransfer host="ftp.dawsonferrer.com" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
