@@ -125,6 +125,28 @@ function mapCharacters($characters)
     return $characters;
 }
 
+class characters
+{
+    public $id, $name, $status, $species, $type, $gender, $origin, $location, $image, $created, $episodes;
+
+    function __construct($id, $name, $status, $species, $type, $gender, $origin, $location, $image, $created, $episodes)
+    {
+        $this->id = $id;
+        $this->name = $name;
+        $this->status = $status;
+        $this->species = $species;
+        $this->type = $type;
+        $this->gender = $gender;
+        $this->origin = $origin;
+        $this->location = $location;
+        $this->image = $image;
+        $this->created = $created;
+        $this->episodes = $episodes;
+    }
+
+}
+
+
 //NOTE: Function to render each character card HTML. Don't edit.
 function renderCard($character)
 {
