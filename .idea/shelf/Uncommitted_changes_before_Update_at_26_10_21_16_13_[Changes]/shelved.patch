@@ -1,0 +1,287 @@
+Index: ../Examen/hola.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\nphpinfo();
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Examen/hola.php b/../Examen/hola.php
+--- a/../Examen/hola.php	(revision a241050fb7b838a979f8f157e9f0c15918a33a61)
++++ b/../Examen/hola.php	(date 1634749629197)
+@@ -1,2 +1,159 @@
+ <?php
+-phpinfo();
+\ No newline at end of file
++$seed = 0000; //TODO: LAST 4 NUMBERS OF YOUR DNI.
++$api_url = "https://dawsonferrer.com/allabres/apis_solutions/rickandmorty/api.php?seed=" . $seed . "&data=";
++
++//NOTE: Arrays unsorted
++$characters = json_decode(file_get_contents($api_url . "characters"), true);
++$episodes = json_decode(file_get_contents($api_url . "episodes"), true);
++$locations = json_decode(file_get_contents($api_url . "locations"), true);
++/*
++function getSortedCharactersById($characters)
++{
++    //TODO: Your code here.
++    $ordenar = [];
++
++
++    for ($i = 0; $i < count($characters); $i++){
++        for ($j = 0; $j < count($characters); $j++){
++            if ($characters[$i]["id"] < $characters[$j]["id"]){
++                $ordenar = $characters[$i];
++                $characters[$i] = $characters[$j];
++                $characters[$j] = $ordenar;
++            }
++        }
++    }
++    return $characters;
++}
++*/
++
++function getSortedCharactersByOrigin($characters)
++{
++    //TODO: Your code here.
++}
++
++function getSortedCharactersByStatus($characters)
++{
++    //TODO: Your code here.
++}
++
++//NOTE: OPTIONAL FUNCTION
++function getSortedLocationsById($locations)
++{
++    $ordenar = [];
++
++    for ($i = 0; $i < count($locations);$i++){
++        for ($j = 0; $j < count($locations);$j++){
++            if ($locations[$i]["id"] < $locations[$j]["id"]){
++                $ordenar = $locations[$i];
++                $locations[$i] = $locations[$j];
++                $locations[$j] = $ordenar;
++            }
++        }
++    }
++    return $locations;
++}
++
++//NOTE: OPTIONAL FUNCTION
++function getSortedEpisodesById($episodes)
++{
++    //TODO: Your code here.
++}
++/*
++function mapCharacters($characters,$locations)
++{
++    //TODO: Your code here.
++    for ($i = 0; $i < count($characters);$i++){
++        for($x = 0; $x < count($locations);$x++){
++            if ($characters[$i]["origin"] == $locations[$x]["id"]){
++                $characters[$i]["origin"] = $locations[$x]["name"];
++            }
++        }
++    }
++    return $characters;
++
++}
++*/
++
++//NOTE: Function to render each character card HTML. Don't edit.
++function renderCard($character)
++{
++    $ch = curl_init('https://dawsonferrer.com/allabres/apis_solutions/rickandmorty/api.php?data=render');
++    $data = array("character" => $character);
++    $postData = json_encode($data);
++    curl_setopt($ch, CURLOPT_POST, 1);
++    curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
++    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
++    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
++    $result = curl_exec($ch);
++    curl_close($ch);
++    return $result;
++}
++
++//NOTE: $sortingCriteria receive the sorting criteria of the form. Don't edit
++$sortingCriteria = "";
++if (isset($_GET["sortingCriteria"])) {
++    $sortingCriteria = $_GET["sortingCriteria"];
++    switch ($sortingCriteria) {
++        case "id":
++            $characters = getSortedCharactersById($characters);
++            break;
++        case "origin":
++            $characters = getSortedCharactersByOrigin($characters);
++            break;
++        case "status":
++            $characters = getSortedCharactersByStatus($characters);
++            break;
++    }
++}
++
++//NOTE: Save function returns to variables and then you can use it as globals if needed. Don't edit.
++$sortedLocations = getSortedLocationsById($locations);
++$sortedEpisodes = getSortedEpisodesById($episodes);
++$mappedCharacters = mapCharacters($characters);
++
++?>
++
++<html lang="es">
++<head>
++    <title>RMDB</title>
++    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
++          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
++    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
++            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
++            crossorigin="anonymous"></script>
++    <meta name="viewport" content="width=device-width, initial-scale=1">
++</head>
++<body>
++<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
++    <div class="container-fluid">
++        <div class="collapse navbar-collapse" id="navbarSupportedContent">
++            <form class="d-flex" action="rickandmorty.php">
++                <select class="form-control me-2 form-select" aria-label="Sorting criteria" name="sortingCriteria">
++                    <option <?php echo($sortingCriteria == "" ? "selected" : "") ?> value="unsorted">Sorting criteria
++                    </option>
++                    <option <?php echo($sortingCriteria == "id" ? "selected" : "") ?> value="id">Id</option>
++                    <option <?php echo($sortingCriteria == "origin" ? "selected" : "") ?> value="origin">Origin</option>
++                    <option <?php echo($sortingCriteria == "status" ? "selected" : "") ?> value="status">Status</option>
++                </select>
++                <button class="btn btn-outline-success" type="submit">Sort</button>
++            </form>
++        </div>
++    </div>
++</nav>
++<main role="main">
++    <div class="py-5 bg-light">
++        <div class="container">
++
++            <div class="row">
++                <?php
++                echo ('<pre>');
++                echo "hola";
++                echo ('</pre>');
++                ?>
++            </div>
++        </div>
++    </div>
++
++</main>
++</body>
++</html>
+Index: ../Examen/.idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"a03fd114-f47a-4643-9376-2a6a5b703136\" name=\"Changes\" comment=\"prueba\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ComposerSettings\">\n    <execution />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"PhpWebServerValidation\" path_to_validation_script=\"$PROJECT_DIR$\" selected_validation_type=\"LOCAL\" web_path_to_validation_script=\"http://127.0.0.1/Examen\" />\n  <component name=\"PhpWorkspaceProjectConfiguration\" interpreter_name=\"PHP 8.0\" />\n  <component name=\"ProjectId\" id=\"1zlz42Nev7Jyo1WxUL7kGqcsQuB\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"compactDirectories\" value=\"true\" />\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showExcludedFiles\" value=\"false\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n    <option name=\"showMembers\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\n    <property name=\"WebServerToolWindowPanel.toolwindow.highlight.mappings\" value=\"true\" />\n    <property name=\"WebServerToolWindowPanel.toolwindow.highlight.symlinks\" value=\"true\" />\n    <property name=\"WebServerToolWindowPanel.toolwindow.show.date\" value=\"false\" />\n    <property name=\"WebServerToolWindowPanel.toolwindow.show.permissions\" value=\"false\" />\n    <property name=\"WebServerToolWindowPanel.toolwindow.show.size\" value=\"false\" />\n    <property name=\"settings.editor.selected.configurable\" value=\"reference.webide.settings.project.settings.php\" />\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"a03fd114-f47a-4643-9376-2a6a5b703136\" name=\"Changes\" comment=\"\" />\n      <created>1634737267813</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1634737267813</updated>\n      <workItem from=\"1634737268929\" duration=\"119000\" />\n      <workItem from=\"1634737481496\" duration=\"160000\" />\n      <workItem from=\"1634737704615\" duration=\"627000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"prueba\">\n      <created>1634737352808</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1634737352808</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"prueba\">\n      <created>1634738238721</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1634738238721</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"3\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"prueba\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"prueba\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Examen/.idea/workspace.xml b/../Examen/.idea/workspace.xml
+--- a/../Examen/.idea/workspace.xml	(revision a241050fb7b838a979f8f157e9f0c15918a33a61)
++++ b/../Examen/.idea/workspace.xml	(date 1634908519269)
+@@ -1,5 +1,8 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="AutoImportSettings">
++    <option name="autoReloadType" value="SELECTIVE" />
++  </component>
+   <component name="ChangeListManager">
+     <list default="true" id="a03fd114-f47a-4643-9376-2a6a5b703136" name="Changes" comment="prueba">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+@@ -14,6 +17,23 @@
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="GitSEFilterConfiguration">
++    <file-type-list>
++      <filtered-out-file-type name="LOCAL_BRANCH" />
++      <filtered-out-file-type name="REMOTE_BRANCH" />
++      <filtered-out-file-type name="TAG" />
++      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
++    </file-type-list>
++  </component>
++  <component name="PhpServers">
++    <servers>
++      <server host="localhost" id="e297ef05-0a80-400c-8d47-c39af3578444" name="localhost" use_path_mappings="true">
++        <path_mappings>
++          <mapping local-root="$PROJECT_DIR$" remote-root="/var/www/html/Examen" />
++        </path_mappings>
++      </server>
++    </servers>
+   </component>
+   <component name="PhpWebServerValidation" path_to_validation_script="$PROJECT_DIR$" selected_validation_type="LOCAL" web_path_to_validation_script="http://127.0.0.1/Examen" />
+   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.0" />
+@@ -34,9 +54,23 @@
+     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
++    <property name="node.js.detected.package.eslint" value="true" />
++    <property name="node.js.detected.package.tslint" value="true" />
++    <property name="node.js.selected.package.eslint" value="(autodetect)" />
++    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+     <property name="vue.rearranger.settings.migration" value="true" />
+   </component>
++  <component name="RunManager">
++    <configuration name="rickandmorty.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/rickandmorty.php">
++      <method v="2" />
++    </configuration>
++    <recent_temporary>
++      <list>
++        <item itemvalue="PHP Script.rickandmorty.php" />
++      </list>
++    </recent_temporary>
++  </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+@@ -48,6 +82,10 @@
+       <workItem from="1634737268929" duration="119000" />
+       <workItem from="1634737481496" duration="160000" />
+       <workItem from="1634737704615" duration="627000" />
++      <workItem from="1634738455666" duration="25000" />
++      <workItem from="1634745027099" duration="3000" />
++      <workItem from="1634746764515" duration="9652000" />
++      <workItem from="1634908508132" duration="12000" />
+     </task>
+     <task id="LOCAL-00001" summary="prueba">
+       <created>1634737352808</created>
+@@ -63,7 +101,35 @@
+       <option name="project" value="LOCAL" />
+       <updated>1634738238721</updated>
+     </task>
+-    <option name="localTasksCounter" value="3" />
++    <task id="LOCAL-00003" summary="prueba">
++      <created>1634746784027</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1634746784027</updated>
++    </task>
++    <task id="LOCAL-00004" summary="prueba">
++      <created>1634746806797</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1634746806797</updated>
++    </task>
++    <task id="LOCAL-00005" summary="prueba">
++      <created>1634756247796</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1634756247796</updated>
++    </task>
++    <task id="LOCAL-00006" summary="prueba">
++      <created>1634756398739</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1634756398739</updated>
++    </task>
++    <option name="localTasksCounter" value="7" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
