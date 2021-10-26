@@ -162,70 +162,10 @@ function renderCard($character)
     return $result;
 }
 
-//NOTE: $sortingCriteria receive the sorting criteria of the form. Don't edit
-$sortingCriteria = "";
-if (isset($_GET["sortingCriteria"])) {
-    $sortingCriteria = $_GET["sortingCriteria"];
-    switch ($sortingCriteria) {
-        case "id":
-            $characters = getSortedCharactersById($characters);
-            break;
-        case "origin":
-            $characters = getSortedCharactersByOrigin($characters);
-            break;
-        case "status":
-            $characters = getSortedCharactersByStatus($characters);
-            break;
-    }
-}
-
 //NOTE: Save function returns to variables and then you can use it as globals if needed. Don't edit.
 $sortedLocations = getSortedLocationsById($locations);
 $sortedEpisodes = getSortedEpisodesById($episodes);
 $mappedCharacters = mapCharacters($characters);
+
+
 ?>
-
-<html lang="es">
-<head>
-    <title>RMDB</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="d-flex" action="rickandmorty.php">
-                <select class="form-control me-2 form-select" aria-label="Sorting criteria" name="sortingCriteria">
-                    <option <?php echo($sortingCriteria == "" ? "selected" : "") ?> value="unsorted">Sorting criteria
-                    </option>
-                    <option <?php echo($sortingCriteria == "id" ? "selected" : "") ?> value="id">Id</option>
-                    <option <?php echo($sortingCriteria == "origin" ? "selected" : "") ?> value="origin">Origin</option>
-                    <option <?php echo($sortingCriteria == "status" ? "selected" : "") ?> value="status">Status</option>
-                </select>
-                <button class="btn btn-outline-success" type="submit">Sort</button>
-            </form>
-        </div>
-    </div>
-</nav>
-<main role="main">
-    <div class="py-5 bg-light">
-        <div class="container">
-
-            <div class="row">
-                <?php
-                foreach ($mappedCharacters as $character) {
-                    echo renderCard($character);
-                }
-                ?>
-            </div>
-        </div>
-    </div>
-
-</main>
-</body>
-</html>
