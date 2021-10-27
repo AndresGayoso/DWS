@@ -5,23 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="251f9b2e-b771-49c2-bfe0-78d387e509c5" name="Changes" comment="php">
+      <change afterPath="$PROJECT_DIR$/Examen.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyectoObjetos/PartidoPolitico.php" beforeDir="false" afterPath="$PROJECT_DIR$/proyectoObjetos/PartidoPolitico.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyectoObjetos/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/proyectoObjetos/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CristmasTree.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NumeroPrimos.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NumerosPerfectos.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OrdenarArray.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SecurePassword.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../divisores.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../elephants-multifilter.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../elephants.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phpinfo.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proyectoObjetos/PartidoPolitico.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proyectoObjetos/main.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rickandmorty.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../world.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../world_mapping.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +19,8 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4" />
+  <component name="PhpWebServerValidation" path_to_validation_script="$PROJECT_DIR$" selected_validation_type="LOCAL" web_path_to_validation_script="http://localhost/Actividades" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.0" />
   <component name="ProjectId" id="1zjkYvCXMMDoIPE2bO1jrDefkC0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -45,20 +31,23 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f502afef-5c50-44a2-8d4c-a5049efe7004" name="Changes" comment="" />
+      <changelist id="251f9b2e-b771-49c2-bfe0-78d387e509c5" name="Changes" comment="php" />
       <created>1634668935811</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1634668935811</updated>
       <workItem from="1634668936947" duration="157000" />
       <workItem from="1634735933067" duration="39000" />
+      <workItem from="1635341224159" duration="1278000" />
     </task>
     <task id="LOCAL-00001" summary="php">
       <created>1635271995260</created>
@@ -74,7 +63,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635272094007</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="php">
+      <created>1635274469613</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1635274469613</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
