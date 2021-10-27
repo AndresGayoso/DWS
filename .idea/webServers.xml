@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="ad0eb4e5-d0d9-4ff1-bdea-ebf29681f36d" name="server" url="http://localhost/Actividades">
+        <fileTransfer mountedRoot="$PROJECT_DIR$" accessType="MOUNT" port="0" />
+      </webServer>
+      <webServer id="9050d3c7-be02-48ae-a5e9-6f0fce286643" name="ftp" url="http://ftp.dawsonferrer.com">
+        <fileTransfer host="ftp.dawsonferrer.com" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
