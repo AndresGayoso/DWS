@@ -81,9 +81,13 @@ function getSortedEpisodesById($episodes)
     //TODO: Your code here.
 }
 
-function mapCharacters($characters,$locations,$episodes)
+function mapCharacters($characters)
 {
     //TODO: Your code here
+
+    global $locations;
+    global $episodes;
+
     for ($i = 0; $i < count($characters);$i++){
         for($x = 0; $x < count($locations);$x++){
             if ($characters[$i]["origin"] == $locations[$x]["id"]){
@@ -145,7 +149,7 @@ if (isset($_GET["sortingCriteria"])) {
 //NOTE: Save function returns to variables and then you can use it as globals if needed. Don't edit.
 $sortedLocations = getSortedLocationsById($locations);
 $sortedEpisodes = getSortedEpisodesById($episodes);
-$mappedCharacters = mapCharacters($characters,$locations,$episodes);
+$mappedCharacters = mapCharacters($characters);
 
 ?>
 
