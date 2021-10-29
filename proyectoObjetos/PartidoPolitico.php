@@ -2,18 +2,25 @@
 
 class PartidoPolitico{
 
+    private $id;
     private $nombre;
     private $provincia;
     private $votos;
     private $escanos;
 
-    function __constructor($nombre,$provincia,$votos,$escanos){
+    function __constructor($id,$nombre,$provincia,$votos,$escanos){
 
+        $this->id=$id;
         $this->nombre=$nombre;
         $this->provincia=$provincia;
         $this->votos=$votos;
         $this->escanos=$escanos;
 
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 
     public function getNombre()
