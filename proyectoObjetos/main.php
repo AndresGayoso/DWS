@@ -1,17 +1,19 @@
 <?php
 include ("PartidoPolitico.php");
 
-//$contents = file_get_contents("https://dawsonferrer.com/allabres/apis_solutions/elections/api.php?data=districts");
-//$contents = file_get_contents("https://dawsonferrer.com/allabres/apis_solutions/elections/api.php?data=results");
-$contents = file_get_contents("https://dawsonferrer.com/allabres/apis_solutions/elections/api.php?data=parties");
-$provincias = json_decode($contents, true);
+$contents1 = file_get_contents("https://dawsonferrer.com/allabres/apis_solutions/elections/api.php?data=districts");
+$contents2 = file_get_contents("https://dawsonferrer.com/allabres/apis_solutions/elections/api.php?data=results");
+$contents3 = file_get_contents("https://dawsonferrer.com/allabres/apis_solutions/elections/api.php?data=parties");
+$resultado = json_decode($contents2, true);
+$partidos = json_decode($contents3, true);
+$provincias = json_decode($contents1, true);
 
- $partidos = [0,0,0,0,0];
+ $partido = [0,0,0,0,0];
  $prueba = [15000,280000,60000,340000,160000];
 
-function createPartidos(){
+function calcularEscaños(){
 
-     global $partidos;
+     global $partido;
      global $prueba;
 
      $mayor = 0;
@@ -23,15 +25,15 @@ function createPartidos(){
             }
         }
 
-        $partidos[$mayor]++;
+        $partido[$mayor]++;
 
         $prueba[$mayor] = $prueba[$mayor] / 2;
 
     }
 
-    return $partidos;
+    return $partido;
 
 }
 echo ("<pre>");
-var_dump(createPartidos());
+var_dump($partidos);
 echo ("</pre>");

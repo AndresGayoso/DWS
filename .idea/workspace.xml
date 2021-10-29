@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="251f9b2e-b771-49c2-bfe0-78d387e509c5" name="Changes" comment="php">
-      <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyectoObjetos/PartidoPolitico.php" beforeDir="false" afterPath="$PROJECT_DIR$/proyectoObjetos/PartidoPolitico.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proyectoObjetos/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/proyectoObjetos/main.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +71,7 @@
       <workItem from="1635343935008" duration="142000" />
       <workItem from="1635351647374" duration="4027000" />
       <workItem from="1635358105372" duration="648000" />
-      <workItem from="1635513699503" duration="2662000" />
+      <workItem from="1635513699503" duration="4918000" />
     </task>
     <task id="LOCAL-00001" summary="php">
       <created>1635271995260</created>
@@ -124,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635356135146</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="php">
+      <created>1635516646953</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1635516646953</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,16 +150,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="php" />
     <option name="LAST_COMMIT_MESSAGE" value="php" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/proyectoObjetos/main.php</url>
-          <line>18</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
