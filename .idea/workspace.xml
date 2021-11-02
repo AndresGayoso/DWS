@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="251f9b2e-b771-49c2-bfe0-78d387e509c5" name="Changes" comment="php">
+      <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_10_21_16_13_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_10_21_16_13__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examen.php" beforeDir="false" afterPath="$PROJECT_DIR$/Examen.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyectoObjetos/PartidoPolitico.php" beforeDir="false" afterPath="$PROJECT_DIR$/proyectoObjetos/Partido.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proyectoObjetos/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/proyectoObjetos/main.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,6 +23,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpServers">
@@ -71,7 +84,11 @@
       <workItem from="1635343935008" duration="142000" />
       <workItem from="1635351647374" duration="4027000" />
       <workItem from="1635358105372" duration="648000" />
-      <workItem from="1635513699503" duration="4918000" />
+      <workItem from="1635513699503" duration="5031000" />
+      <workItem from="1635524817120" duration="599000" />
+      <workItem from="1635876742132" duration="4569000" />
+      <workItem from="1635882253448" duration="160000" />
+      <workItem from="1635882749651" duration="337000" />
     </task>
     <task id="LOCAL-00001" summary="php">
       <created>1635271995260</created>
@@ -129,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635516646953</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="php">
+      <created>1635519638839</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1635519638839</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,5 +174,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="php" />
     <option name="LAST_COMMIT_MESSAGE" value="php" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/proyectoObjetos/main.php</url>
+          <line>12</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

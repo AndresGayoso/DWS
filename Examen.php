@@ -1,5 +1,5 @@
 <?php
-$seed = 0000; //TODO: LAST 4 NUMBERS OF YOUR DNI.
+$seed = 8189; //TODO: LAST 4 NUMBERS OF YOUR DNI.
 $api_url = "https://dawsonferrer.com/allabres/apis_solutions/rickandmorty/api.php?seed=" . $seed . "&data=";
 
 //NOTE: Arrays unsorted
@@ -93,12 +93,18 @@ function mapCharacters($characters)
             if ($characters[$i]["origin"] == $locations[$x]["id"]){
                 $characters[$i]["origin"] = $locations[$x]["name"];
             }
+            if($characters[$i]["origin"] == 0){
+                $characters[$i]["origin"] = "unknown";
+            }
         }
     }
     for ($i = 0; $i < count($characters);$i++){
         for($x = 0; $x < count($locations);$x++){
             if ($characters[$i]["location"] == $locations[$x]["id"]){
                 $characters[$i]["location"] = $locations[$x]["name"];
+            }
+            if($characters[$i]["location"] == 0){
+                $characters[$i]["location"] = "unknown";
             }
         }
     }
@@ -107,6 +113,9 @@ function mapCharacters($characters)
             for ($x = 0; $x < count($episodes); $x++) {
                 if ($characters[$j]["episodes"][$i] == $episodes[$x]["id"]) {
                     $characters[$j]["episodes"][$i] = $episodes[$x]["name"];
+                }
+                if($characters[$i]["episodes"] == 0){
+                    $characters[$i]["episodes"] = "unknown";
                 }
             }
         }
