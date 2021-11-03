@@ -2,16 +2,11 @@
 
 class Partido{
 
-    public string $nombre;
-    public string $provincia;
-    public int $votos;
-    public int $escanos;
+    private string $nombre;
+    private string $provincia;
+    private int $votos;
+    private int $escanos;
 
-    /**
-     * @param string $nombre
-     * @param string $provincia
-     * @param int $votos
-     */
     public function __construct(string $nombre, string $provincia, int $votos)
     {
         $this->nombre = $nombre;
