@@ -124,7 +124,8 @@ $resultados = createObjectPartidos($resultado);
 <div>
     <form action="main.php" method="get">
         <select name="seleccion">
-            <option value="comunidad">Comunidad</option>
+            <option value = "">Elige el filtro</option>
+            <option value="comunidad">Filtrar por Comunidad</option>
             <option value="partidos">Filtrar por partidos</option>
             <option value="generales">Resultados Generales</option>
         </select>
