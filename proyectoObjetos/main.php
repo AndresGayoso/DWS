@@ -123,18 +123,28 @@ $resultados = createObjectPartidos($resultado);
 <body>
 <div>
     <form action="main.php" method="get">
-        <select name="seleccion">
-            <option value = "">Elige el filtro</option>
-            <option value="comunidad">Filtrar por Comunidad</option>
-            <option value="partidos">Filtrar por partidos</option>
-            <option value="generales">Resultados Generales</option>
-        </select>
             <?php
-                $select = $_GET["seleccion"];
+            $select = $_GET["seleccion"];
+            $selectP = $_GET["provincia"];
+            echo ('<select name="seleccion">');
+                echo ('<option value = "">Elige el filtro</option>');
+                if($select == "comunidad"){
+                    echo ('<option value="comunidad" selected>Filtrar por Comunidad</option>');
+                }else{
+                    ('<option value="comunidad">Filtrar por Comunidad</option>');
+                }
+                echo ('<option value="comunidad">Filtrar por Comunidad</option>');
+                echo ('<option value="partidos">Filtrar por partidos</option>');
+                echo ('<option value="generales">Resultados Generales</option>');
+            echo ('</select>');
                 if ($select == "comunidad"){
                     echo '<select name="provincia">';
                     for($i = 0;$i < count($provincias);$i++){
-                        echo '<option value="'.$provincias[$i]["name"].'"> '.$provincias[$i]["name"].'</option>';
+                        if ($selectP == $provincias[$i]["name"]){
+                            echo '<option value="'.$provincias[$i]["name"].'" selected> '.$provincias[$i]["name"].'</option>';
+                        }else{
+                            echo '<option value="'.$provincias[$i]["name"].'"> '.$provincias[$i]["name"].'</option>';
+                        }
                     }
                     echo '</select>';
                 }
@@ -144,6 +154,7 @@ $resultados = createObjectPartidos($resultado);
                         echo '<option value="'.$partidos[$i]["name"].'"> '.$partidos[$i]["name"].'</option>';
                     }
                     echo '</select>';
+                    $seleccionado = $select;
                 }
                 ?>
         <button type="submit">Filtrar</button>
@@ -152,8 +163,10 @@ $resultados = createObjectPartidos($resultado);
 </body>
 </html>
 <?php
-$select = $_GET["seleccion"];
-if($select == ""){
+
+global $select;
+
+if($select == "comunidad"){
     $selectP = $_GET["provincia"];
     if($selectP != ""){
         $filtroP = FilterProvincia($selectP);
