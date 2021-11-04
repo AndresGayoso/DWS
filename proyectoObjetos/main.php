@@ -146,14 +146,14 @@ $resultados = createObjectPartidos($resultado);
                     echo '</select>';
                 }
                 ?>
-        <button type="submit">Mostrar</button>
+        <button type="submit">Filtrar</button>
     </form>
 </div>
 </body>
 </html>
 <?php
 $select = $_GET["seleccion"];
-if($select == "comunidad"){
+if($select == ""){
     $selectP = $_GET["provincia"];
     if($selectP != ""){
         $filtroP = FilterProvincia($selectP);
