@@ -33,7 +33,11 @@ function FilterProvincia($provincia){
 
 }
 
-function LeyHondt($partidos){
+function FilterPartido(){
+
+}
+
+function LeyHondtProvincias($partidos){
 
     global $provincias;
 
@@ -57,7 +61,7 @@ function LeyHondt($partidos){
         }
     }
 
-    for ($i = 0; $i < $total;$i++) {
+    for ($i = 0; $i <= $total;$i++) {
         for ($x = 0; $x < count($votos); $x++) {
             if ($votos[$x] > $votos[$mayor]) {
                 $mayor = $x;
@@ -81,22 +85,22 @@ function LeyHondt($partidos){
 
 function Mapping(){
 
-    global $filtro;
+    global $filtroP;
 
     echo "<br><table border = 1>";
     echo "<tr><td>Provincia</td><td>Partido</td><td>Votos</td><td>Escaños</td></tr>";
-    for ($i = 0;$i < count($filtro);$i++){
+    for ($i = 0;$i < count($filtroP);$i++){
         echo "<tr><td>";
-        echo $filtro[$i]->getProvincia();
+        echo $filtroP[$i]->getProvincia();
         echo "</td>";
         echo "<td>";
-        echo $filtro[$i]->getNombre();
+        echo $filtroP[$i]->getNombre();
         echo "</td>";
         echo "<td>";
-        echo $filtro[$i]->getVotos();
+        echo $filtroP[$i]->getVotos();
         echo "</td>";
         echo "<td>";
-        echo $filtro[$i]->getEscanos();
+        echo $filtroP[$i]->getEscanos();
         echo "</td>";
         echo "</tr>";
     }
@@ -106,8 +110,6 @@ function Mapping(){
 }
 
 $resultados = createObjectPartidos($resultado);
-
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -121,27 +123,40 @@ $resultados = createObjectPartidos($resultado);
 <body>
 <div>
     <form action="main.php" method="get">
-        <select name="select">
-            <option value="">Comunidad</option>
+        <select name="seleccion">
+            <option value="comunidad">Comunidad</option>
+            <option value="partidos">Filtrar por partidos</option>
+            <option value="generales">Resultados Generales</option>
+        </select>
             <?php
-                for($i = 0;$i < count($provincias);$i++){
-                    echo '<option value="'.$provincias[$i]["name"].'"> '.$provincias[$i]["name"].'</option>';
+                $select = $_GET["seleccion"];
+                if ($select == "comunidad"){
+                    echo '<select name="provincia">';
+                    for($i = 0;$i < count($provincias);$i++){
+                        echo '<option value="'.$provincias[$i]["name"].'"> '.$provincias[$i]["name"].'</option>';
+                    }
+                    echo '</select>';
+                }
+                if ($select == "partidos"){
+                    echo '<select name="partidos">';
+                    for($i = 0;$i < count($partidos);$i++){
+                        echo '<option value="'.$partidos[$i]["name"].'"> '.$partidos[$i]["name"].'</option>';
+                    }
+                    echo '</select>';
                 }
                 ?>
-        </select>
         <button type="submit">Mostrar</button>
     </form>
 </div>
 </body>
 </html>
 <?php
-$select = $_GET["select"];
-if($select != ""){
-    $filtro = FilterProvincia($select);
-    $escanos = LeyHondt($filtro);
-    echo "<pre>";
-    Mapping();
-    echo "</pre>";
-}else{
-    echo "   ";
+$select = $_GET["seleccion"];
+if($select == "comunidad"){
+    $selectP = $_GET["provincia"];
+    if($selectP != ""){
+        $filtroP = FilterProvincia($selectP);
+        $escanos = LeyHondtProvincias($filtroP);
+        Mapping();
+    }
 }
