@@ -35,6 +35,8 @@ function FilterProvincia($provincia){
 
 function LeyHondt($partidos){
 
+    global $provincias;
+
     $escanos = [];
     $votos = [];
 
@@ -43,28 +45,35 @@ function LeyHondt($partidos){
         $votos[] = $partidos[$i]->getVotos();
     }
 
-    var_dump($escanos);
-    var_dump($votos);
-
-    /*
     $mayor = 0;
+    $total = 0;
 
-    for ($i = 0; $i < 7;$i++){
-        for ($x = 0; $x < count($votos);$x++){
-            if($votos[$x]->getVotos() > $votos[$mayor]){
+    for ($i = 0;$i < count($partidos);$i++){
+        for($x = 0;$x < count($provincias);$x++){
+            if ($partidos[$i]->getProvincia() == $provincias[$i]["name"]){
+                $total = $provincias[$i]["delegates"];
+                break 2;
+            }
+        }
+    }
+
+    for ($i = 0; $i < $total;$i++) {
+        for ($x = 0; $x < count($votos); $x++) {
+            if ($votos[$x] > $votos[$mayor]) {
                 $mayor = $x;
             }
         }
 
-        $partido[$mayor]++;
+    $escanos[$mayor]++;
 
-        $prueba[$mayor] = $prueba[$mayor] / 2;
-
+    $votos[$mayor] = $votos[$mayor] / 2;
     }
 
-    return $partido;
-*/
+    for($i = 0; $i < count($partidos);$i++){
+        $partidos[$i]->setEscanos($escanos[$i]);
+    }
 
+    return $partidos;
 
 }
 
@@ -87,6 +96,7 @@ function Mapping(){
         echo $filtro[$i]->getVotos();
         echo "</td>";
         echo "<td>";
+        echo $filtro[$i]->getEscanos();
         echo "</td>";
         echo "</tr>";
     }
@@ -95,35 +105,6 @@ function Mapping(){
 
 }
 
-/*
- Ley Hondt
- $partido = [0,0,0,0,0];
- $prueba = [15000,280000,60000,340000,160000];
-
-function calcularEscaños(){
-
-     global $partido;
-     global $prueba;
-
-     $mayor = 0;
-
-    for ($i = 0; $i < 7;$i++){
-        for ($x = 0; $x < count($prueba);$x++){
-            if($prueba[$x] > $prueba[$mayor]){
-                $mayor = $x;
-            }
-        }
-
-        $partido[$mayor]++;
-
-        $prueba[$mayor] = $prueba[$mayor] / 2;
-
-    }
-
-    return $partido;
-
-}
-*/
 $resultados = createObjectPartidos($resultado);
 
 
@@ -157,8 +138,9 @@ $resultados = createObjectPartidos($resultado);
 $select = $_GET["select"];
 if($select != ""){
     $filtro = FilterProvincia($select);
+    $escanos = LeyHondt($filtro);
     echo "<pre>";
-    LeyHondt($filtro);
+    Mapping();
     echo "</pre>";
 }else{
     echo "   ";

@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="251f9b2e-b771-49c2-bfe0-78d387e509c5" name="Changes" comment="php">
-      <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyectoObjetos/Partido.php" beforeDir="false" afterPath="$PROJECT_DIR$/proyectoObjetos/Partido.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proyectoObjetos/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/proyectoObjetos/main.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,15 +32,15 @@
   <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpServers">
     <servers>
-      <server host="localhost" id="89c6644c-be4c-465a-b420-4867d1a15f18" name="localhost" use_path_mappings="true">
+      <server host="localhost" id="89c6644c-be4c-465a-b420-4867d1a15f18" name="localhost">
         <path_mappings>
           <mapping local-root="$PROJECT_DIR$" remote-root="/var/www/html/Actividades" />
         </path_mappings>
       </server>
     </servers>
   </component>
-  <component name="PhpWebServerValidation" path_to_validation_script="$PROJECT_DIR$" selected_validation_type="LOCAL" web_path_to_validation_script="http://localhost/Actividades" />
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.0" />
+  <component name="PhpWebServerValidation" path_to_validation_script="$PROJECT_DIR$" selected_validation_type="LOCAL" web_path_to_validation_script="http://localhost/" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectId" id="1zjkYvCXMMDoIPE2bO1jrDefkC0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -59,6 +59,11 @@
   </component>
   <component name="RunManager">
     <configuration name="main.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/proyectoObjetos/main.php">
+      <CommandLine>
+        <PhpTestInterpreterSettings>
+          <option name="interpreterName" value="PHP" />
+        </PhpTestInterpreterSettings>
+      </CommandLine>
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -88,6 +93,7 @@
       <workItem from="1635882749651" duration="394000" />
       <workItem from="1635952262170" duration="63000" />
       <workItem from="1635960056631" duration="6512000" />
+      <workItem from="1635981088254" duration="3270000" />
     </task>
     <task id="LOCAL-00001" summary="php">
       <created>1635271995260</created>
