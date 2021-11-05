@@ -1,16 +1,14 @@
 <?php
 
-class Partido{
-
+class Generales
+{
     private string $nombre;
-    private string $provincia;
     private int $votos;
     public int $escanos;
 
-    public function __construct(string $nombre, string $provincia, int $votos)
+    public function __construct(string $nombre,int $votos)
     {
         $this->nombre = $nombre;
-        $this->provincia = $provincia;
         $this->votos = $votos;
     }
 
@@ -18,11 +16,6 @@ class Partido{
     public function getNombre()
     {
         return $this->nombre;
-    }
-
-    public function getProvincia()
-    {
-        return $this->provincia;
     }
 
     public function getVotos()
@@ -43,7 +36,4 @@ class Partido{
     {
         $this->votos = $votos;
     }
-
-
-
 }

@@ -1,5 +1,7 @@
 <?php
+error_reporting(0);
 include("Partido.php");
+include("Generales.php");
 
 $contents1 = file_get_contents("https://dawsonferrer.com/allabres/apis_solutions/elections/api.php?data=districts");
 $contents2 = file_get_contents("https://dawsonferrer.com/allabres/apis_solutions/elections/api.php?data=results");
@@ -17,15 +19,34 @@ function createObjectPartidos($resultado){
     return $resultado;
 
 }
+function createObjectGenerales($general){
+
+    global $resultado;
+
+    for($i = 0; $i < count($general);$i++){
+        $general[$i] = new Generales($general[$i]['name'],0);
+    }
+
+    for($i = 0; $i < count($general);$i++){
+        for ($x = 0; $x < count($resultado);$x++){
+            if ($general[$i]->getNombre() == $resultado[$x]["party"]){
+                $general[$i]->setVotos($general[$i]->getVotos()+$resultado[$x]["votes"]);
+            }
+        }
+    }
+
+    return $general;
+
+}
 
 function FilterProvincia($provincia){
 
-    global $resultados;
+    global $objeto;
     $selected = [];
 
-    for($i = 0;$i < count($resultados);$i++){
-        if($provincia == $resultados[$i]->getProvincia()){
-            $selected[] = $resultados[$i];
+    for($i = 0;$i < count($objeto);$i++){
+        if($provincia == $objeto[$i]->getProvincia()){
+            $selected[] = $objeto[$i];
         }
     }
 
@@ -33,7 +54,17 @@ function FilterProvincia($provincia){
 
 }
 
-function FilterPartido(){
+function FilterPartido($partido){
+    global $objeto;
+    $selected = [];
+
+    for($i = 0;$i < count($objeto);$i++){
+        if($partido == $objeto[$i]->getNombre()){
+            $selected[] = $objeto[$i];
+        }
+    }
+
+    return $selected;
 
 }
 
@@ -81,35 +112,68 @@ function LeyHondtProvincias($partidos){
 
 }
 
+function LeyHondtGenerales($objeto)
+{
+    global $provincias;
+
+    $escanos = [];
+    $votos = [];
+
+    for($i = 0;$i < count($objeto);$i++){
+        $escanos[] = 0;
+        $votos[] = $objeto[$i]->getVotos();
+    }
 
 
-function Mapping(){
 
-    global $filtroP;
+    return $objeto;
+
+}
+
+
+
+function Mapping($filtro){
 
     echo "<br><table border = 1>";
     echo "<tr><td>Provincia</td><td>Partido</td><td>Votos</td><td>Escaños</td></tr>";
-    for ($i = 0;$i < count($filtroP);$i++){
+    for ($i = 0;$i < count($filtro);$i++){
         echo "<tr><td>";
-        echo $filtroP[$i]->getProvincia();
+        echo $filtro[$i]->getProvincia();
         echo "</td>";
         echo "<td>";
-        echo $filtroP[$i]->getNombre();
+        echo $filtro[$i]->getNombre();
         echo "</td>";
         echo "<td>";
-        echo $filtroP[$i]->getVotos();
+        echo $filtro[$i]->getVotos();
         echo "</td>";
         echo "<td>";
-        echo $filtroP[$i]->getEscanos();
+        echo $filtro[$i]->getEscanos();
         echo "</td>";
         echo "</tr>";
     }
     echo "</table>";
 
+}
+function MappingGenerales($filtro){
+
+    echo "<br><table border = 1>";
+    echo "<tr><td>Partido</td><td>Votos</td><td>Escaños</td></tr>";
+    for ($i = 0;$i < count($filtro);$i++){
+        echo "<tr><td>";
+        echo $filtro[$i]->getNombre();
+        echo "</td>";
+        echo "<td>";
+        echo $filtro[$i]->getVotos();
+        echo "</td>";
+        echo "<td>";
+        echo "</td>";
+        echo "</tr>";
+    }
+    echo "</table>";
 
 }
 
-$resultados = createObjectPartidos($resultado);
+$objeto = createObjectPartidos($resultado);
 ?>
 <!doctype html>
 <html lang="en">
@@ -125,22 +189,30 @@ $resultados = createObjectPartidos($resultado);
     <form action="main.php" method="get">
             <?php
             $select = $_GET["seleccion"];
-            $selectP = $_GET["provincia"];
+            $selectC = $_GET["provincia"];
+            $selectP = $_GET["partido"];
             echo ('<select name="seleccion">');
                 echo ('<option value = "">Elige el filtro</option>');
                 if($select == "comunidad"){
                     echo ('<option value="comunidad" selected>Filtrar por Comunidad</option>');
                 }else{
-                    ('<option value="comunidad">Filtrar por Comunidad</option>');
+                    echo ('<option value="comunidad">Filtrar por Comunidad</option>');
                 }
-                echo ('<option value="comunidad">Filtrar por Comunidad</option>');
-                echo ('<option value="partidos">Filtrar por partidos</option>');
-                echo ('<option value="generales">Resultados Generales</option>');
+                if($select == "partidos"){
+                    echo ('<option value="partidos" selected>Filtrar por partidos</option>');
+                }else{
+                    echo ('<option value="partidos">Filtrar por partidos</option>');
+                }
+                if($select == "generales"){
+                    echo ('<option value="generales" selected>Resultados Generales</option>');
+                }else{
+                    echo ('<option value="generales">Resultados Generales</option>');
+                }
             echo ('</select>');
                 if ($select == "comunidad"){
                     echo '<select name="provincia">';
                     for($i = 0;$i < count($provincias);$i++){
-                        if ($selectP == $provincias[$i]["name"]){
+                        if ($selectC == $provincias[$i]["name"]){
                             echo '<option value="'.$provincias[$i]["name"].'" selected> '.$provincias[$i]["name"].'</option>';
                         }else{
                             echo '<option value="'.$provincias[$i]["name"].'"> '.$provincias[$i]["name"].'</option>';
@@ -149,12 +221,15 @@ $resultados = createObjectPartidos($resultado);
                     echo '</select>';
                 }
                 if ($select == "partidos"){
-                    echo '<select name="partidos">';
+                    echo '<select name="partido">';
                     for($i = 0;$i < count($partidos);$i++){
-                        echo '<option value="'.$partidos[$i]["name"].'"> '.$partidos[$i]["name"].'</option>';
+                        if($selectP == $partidos[$i]["name"]) {
+                            echo '<option value="'.$partidos[$i]["name"].'" selected>'.$partidos[$i]["name"].'</option>';
+                        }else{
+                            echo '<option value="'.$partidos[$i]["name"].'"> '.$partidos[$i]["name"].'</option>';
+                        }
                     }
                     echo '</select>';
-                    $seleccionado = $select;
                 }
                 ?>
         <button type="submit">Filtrar</button>
@@ -165,12 +240,28 @@ $resultados = createObjectPartidos($resultado);
 <?php
 
 global $select;
+global $selectC;
+global $selectP;
 
 if($select == "comunidad"){
-    $selectP = $_GET["provincia"];
+    $objeto = createObjectPartidos($resultado);
+    $selectC = $_GET["provincia"];
+    if($selectC != ""){
+        $filtroC = FilterProvincia($selectC);
+        $escanos = LeyHondtProvincias($filtroC);
+        Mapping($filtroC);
+    }
+}
+if ($select == "partidos"){
+    $selectP = $_GET["partido"];
     if($selectP != ""){
-        $filtroP = FilterProvincia($selectP);
-        $escanos = LeyHondtProvincias($filtroP);
-        Mapping();
+       $filtroP = FilterPartido($selectP);
+       Mapping($filtroP);
+    }
+}
+if ($select == "generales"){
+    $objeto = createObjectGenerales($partidos);
+    if($select != ""){
+        LeyHondtGenerales($objeto);
     }
 }
