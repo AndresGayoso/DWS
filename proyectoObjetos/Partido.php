@@ -1,17 +1,18 @@
 <?php
 
-class Partido{
-
+class Partido
+{
     private string $nombre;
     private string $provincia;
     private int $votos;
-    public int $escanos;
+    private int $escanos;
 
-    public function __construct(string $nombre, string $provincia, int $votos)
+    public function __construct(string $nombre, string $provincia, int $votos,int $escanos)
     {
         $this->nombre = $nombre;
         $this->provincia = $provincia;
         $this->votos = $votos;
+        $this->escanos = $escanos;
     }
 
 
@@ -43,7 +44,4 @@ class Partido{
     {
         $this->votos = $votos;
     }
-
-
-
 }
