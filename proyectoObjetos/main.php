@@ -11,20 +11,25 @@ $resultado = json_decode($contents2, true);
 $partidos = json_decode($contents3, true);
 $provincias = json_decode($contents1, true);
 
-function createObjectProvincias($resultado)
-{
+//Funcion para crear el objeto de provincia
+function createObjectProvincias($resultado){
 
+    //Bucle para crear el array objetos
     for ($i = 0; $i < count($resultado); $i++) {
+        //Convertimos el array con los valores en un array de objetos(Provincia,Partido,Votos,Escaños).
         $resultado[$i] = new Provincia($resultado[$i]['district'],$resultado[$i]['party'], $resultado[$i]['votes'], 0);
     }
 
     return $resultado;
 
 }
-function createObjectPartidos($resultado)
-{
 
+//Funcion para crear el objeto de partido
+function createObjectPartidos($resultado){
+
+    //Bucle para crear el array objetos
     for ($i = 0; $i < count($resultado); $i++) {
+        //Convertimos el array con los valores en un array de objetos(Partido,Provincia,Votos,Escaños).
         $resultado[$i] = new Partido($resultado[$i]['party'],$resultado[$i]['district'], $resultado[$i]['votes'], 0);
     }
 
@@ -68,14 +73,14 @@ function FilterProvincia($provincia)
     return $selected;
 
 }
-
-function FilterPartido($partido)
+function FilterPartido($provincia)
 {
+
     global $party;
     $selected = [];
 
     for ($i = 0; $i < count($party); $i++) {
-        if ($partido == $party[$i]->getNombre()) {
+        if ($provincia == $party[$i]->getProvincia()) {
             $selected[] = $party[$i];
         }
     }
@@ -88,11 +93,13 @@ function LeyHondtProvincias($partidos)
 {
 
     global $provincias;
+    global $booleano;
 
     $escanos = [];
     $votos = [];
     $totalVotos = 0;
     $valido = [];
+    $novalido=[];
 
     for ($i = 0; $i < count($partidos); $i++) {
         $totalVotos += $partidos[$i]->getVotos();
@@ -100,7 +107,10 @@ function LeyHondtProvincias($partidos)
     for ($i = 0; $i < count($partidos); $i++) {
         if (($totalVotos * 3 / 100) < $partidos[$i]->getVotos()) {
             $valido[] = $partidos[$i];
+        }else{
+            $novalido[] = $partidos[$i];
         }
+
     }
 
     for ($i = 0; $i < count($valido); $i++) {
@@ -114,9 +124,17 @@ function LeyHondtProvincias($partidos)
 
     for ($i = 0; $i < count($valido); $i++) {
         for ($x = 0; $x < count($provincias); $x++) {
-            if ($valido[$i]->getNombre() == $provincias[$x]["name"]) {
-                $total = $provincias[$x]["delegates"];
-                break 2;
+            if($booleano == false){
+                if ($valido[$i]->getNombre() == $provincias[$x]["name"]) {
+                    $total = $provincias[$x]["delegates"];
+                    break 2;
+                }
+            }
+            if($booleano == true){
+                if ($valido[$i]->getProvincia() == $provincias[$x]["name"]) {
+                    $total = $provincias[$x]["delegates"];
+                    break 2;
+                }
             }
         }
     }
@@ -141,6 +159,10 @@ function LeyHondtProvincias($partidos)
         $valido[$i]->setEscanos($escanos[$i]["escanos"]);
     }
 
+    for ($i = 0;$i < count($novalido);$i++){
+        $valido[] = $novalido[$i];
+    }
+
     return $valido;
 
 }
@@ -148,27 +170,25 @@ function LeyHondtPartidos($objetos)
 {
 
     global $provincias;
+    global $selectP;
+
 
     $seleccionadas = [];
 
     for ($i = 0; $i < count($objetos); $i++) {
-        $filter = FilterProvincia($provincias[$i]["name"]);
+        $filter = FilterPartido($provincias[$i]["name"]);
         $escanos = LeyHondtProvincias($filter);
 
-        for ($x = 0;$x < count($objetos);$x++){
-            for ($z = 0;$z < count($escanos);$z++){
-                if ($objetos[$x]->getNombre() == $escanos[$z]->getPartido()){
-                    $objetos[$x]->setEscanos($escanos[$z]->getEscanos());
-                    $seleccionadas[] = $objetos[$x];
-                }
+        for($z = 0; $z < count($escanos);$z++){
+            if ($escanos[$z]->getNombre() == $selectP){
+                $seleccionadas[] = $escanos[$z];
             }
         }
 
     }
 
-    var_dump($seleccionadas);
-
     return $seleccionadas;
+
 }
 
 function LeyHondtGenerales($objetos)
@@ -225,10 +245,10 @@ function MappingPartidos($filtro)
     echo "<tr><td>Provincia</td><td>Partido</td><td>Votos</td><td>Escaños</td></tr>";
     for ($i = 0; $i < count($filtro); $i++) {
         echo "<tr><td>";
-        echo $filtro[$i]->getNombre();
+        echo $filtro[$i]->getProvincia();
         echo "</td>";
         echo "<td>";
-        echo $filtro[$i]->getPartido();
+        echo $filtro[$i]->getNombre();
         echo "</td>";
         echo "<td>";
         echo $filtro[$i]->getVotos();
@@ -349,15 +369,14 @@ if ($select == "comunidad") {
 if ($select == "partidos") {
     $selectP = $_GET["partido"];
     if ($selectP != "") {
+        $booleano = true;
         $escanos = LeyHondtPartidos($party);
         MappingPartidos($escanos);
-
     }
 }
 if ($select == "generales") {
     if ($select != "") {
         $escanos = LeyHondtGenerales($general);
         MappingGenerales($escanos);
-
     }
 }
