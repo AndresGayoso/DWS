@@ -11,6 +11,10 @@ $resultado = json_decode($contents2, true);
 $partidos = json_decode($contents3, true);
 $provincias = json_decode($contents1, true);
 
+$objeto = createObjectProvincias($resultado);
+$general = createObjectGenerales($partidos);
+$party = createObjectPartidos($resultado);
+
 //Funcion para crear el objeto de provincia
 function createObjectProvincias($resultado){
 
@@ -285,10 +289,6 @@ function MappingGenerales($filtro)
     echo "</table>";
 
 }
-
-$objeto = createObjectProvincias($resultado);
-$general = createObjectGenerales($partidos);
-$party = createObjectPartidos($resultado);
 ?>
     <!doctype html>
     <html lang="en">
