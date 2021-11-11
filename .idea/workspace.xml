@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="251f9b2e-b771-49c2-bfe0-78d387e509c5" name="Changes" comment="php">
+      <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyectoObjetos/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/proyectoObjetos/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MySQLi/prueba.php" beforeDir="false" afterPath="$PROJECT_DIR$/MySQLi/prueba.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +40,8 @@
       </server>
     </servers>
   </component>
-  <component name="PhpWebServerValidation" path_to_validation_script="$PROJECT_DIR$" selected_validation_type="LOCAL" web_path_to_validation_script="http://localhost/" />
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+  <component name="PhpWebServerValidation" path_to_validation_script="$PROJECT_DIR$" selected_validation_type="LOCAL" web_path_to_validation_script="http://localhost/Actividades" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.0" />
   <component name="ProjectId" id="1zjkYvCXMMDoIPE2bO1jrDefkC0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -57,7 +58,7 @@
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="PHP Script.prueba.php">
     <configuration name="main.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/proyectoObjetos/main.php">
       <CommandLine>
         <PhpTestInterpreterSettings>
@@ -66,8 +67,12 @@
       </CommandLine>
       <method v="2" />
     </configuration>
+    <configuration name="prueba.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/MySQLi/prueba.php">
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHP Script.prueba.php" />
         <item itemvalue="PHP Script.main.php" />
       </list>
     </recent_temporary>
@@ -94,6 +99,14 @@
       <workItem from="1635952262170" duration="63000" />
       <workItem from="1635960056631" duration="6512000" />
       <workItem from="1635981088254" duration="3270000" />
+      <workItem from="1636052232722" duration="1512000" />
+      <workItem from="1636121532562" duration="14920000" />
+      <workItem from="1636141654552" duration="45000" />
+      <workItem from="1636384566018" duration="904000" />
+      <workItem from="1636481816517" duration="4048000" />
+      <workItem from="1636565464893" duration="3687000" />
+      <workItem from="1636571572801" duration="2487000" />
+      <workItem from="1636643369876" duration="3499000" />
     </task>
     <task id="LOCAL-00001" summary="php">
       <created>1635271995260</created>
@@ -172,7 +185,56 @@
       <option name="project" value="LOCAL" />
       <updated>1635967241896</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="php">
+      <created>1636041939258</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1636041939258</updated>
+    </task>
+    <task id="LOCAL-00013" summary="php">
+      <created>1636042118589</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1636042118589</updated>
+    </task>
+    <task id="LOCAL-00014" summary="php">
+      <created>1636055306010</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1636055306010</updated>
+    </task>
+    <task id="LOCAL-00015" summary="php">
+      <created>1636138287308</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1636138287308</updated>
+    </task>
+    <task id="LOCAL-00016" summary="php">
+      <created>1636384794699</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1636384794700</updated>
+    </task>
+    <task id="LOCAL-00017" summary="php">
+      <created>1636482571510</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1636482571510</updated>
+    </task>
+    <task id="LOCAL-00018" summary="php">
+      <created>1636574258648</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1636574258648</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
