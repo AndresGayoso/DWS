@@ -4,12 +4,73 @@ include("Provincia.php");
 include("Generales.php");
 include ("Partido.php");
 
-$contents1 = file_get_contents("https://dawsonferrer.com/allabres/apis_solutions/elections/api.php?data=districts");
-$contents2 = file_get_contents("https://dawsonferrer.com/allabres/apis_solutions/elections/api.php?data=results");
-$contents3 = file_get_contents("https://dawsonferrer.com/allabres/apis_solutions/elections/api.php?data=parties");
-$resultado = json_decode($contents2, true);
-$partidos = json_decode($contents3, true);
-$provincias = json_decode($contents1, true);
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "Circumscripcion";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+function DatosResultados(){
+
+    global $conn;
+
+    $resultado = [];
+
+    $sql = "SELECT * FROM Resultados";
+    $resultados = $conn->query($sql);
+
+    for($i = 0; $row = $resultados->fetch_assoc();$i++){
+        $resultado[$i]["district"] = $row["distrito"];
+        $resultado[$i]["party"] = $row["partido"];
+        $resultado[$i]["votes"] = $row["votos"];
+    }
+
+    return $resultado;
+
+}
+function DatosPartidos(){
+
+    global $conn;
+
+    $resultado = [];
+
+    $sql = "SELECT * FROM Partidos";
+    $resultados = $conn->query($sql);
+
+    for($i = 0; $row = $resultados->fetch_assoc();$i++){
+        $resultado[$i]["id"] = $row["id"];
+        $resultado[$i]["name"] = $row["nombre"];
+        $resultado[$i]["acronym"] = $row["acronym"];
+        $resultado[$i]["logo"] = $row["logo"];
+        $resultado[$i]["colour"] = $row["color"];
+    }
+
+    return $resultado;
+
+}
+function DatosProvincias(){
+
+    global $conn;
+
+    $resultado = [];
+
+    $sql = "SELECT * FROM Provincias";
+    $resultados = $conn->query($sql);
+
+    for($i = 0; $row = $resultados->fetch_assoc();$i++){
+        $resultado[$i]["id"] = $row["id"];
+        $resultado[$i]["name"] = $row["nombre"];
+        $resultado[$i]["delegates"] = $row["delegates"];
+    }
+
+    return $resultado;
+
+}
+
+$resultado = DatosResultados();
+$partidos = DatosPartidos();
+$provincias = DatosProvincias();
 
 $objeto = createObjectProvincias($resultado);
 $general = createObjectGenerales($partidos);
@@ -25,7 +86,6 @@ function createObjectProvincias($resultado){
     }
 
     return $resultado;
-
 }
 
 //Funcion para crear el objeto de partido
@@ -353,8 +413,6 @@ function MappingGenerales($filtro)
     </body>
     </html>
 <?php
-
-var_dump($provincias);
 
 global $select;
 global $selectC;

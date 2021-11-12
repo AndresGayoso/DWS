@@ -18,6 +18,24 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
+$sql = "SELECT * FROM Provincias";
+$result = $conn->query($sql);
+
+
+/*
+if ($result->num_rows > 0) {
+    // output data of each row
+    for($i = 0;$row = $result->fetch_assoc();$i++) {
+        $hola[$i]["id"] = $row["id"];
+    }
+} else {
+    echo "0 results";
+}
+*/
+echo "<pre>";
+var_dump($hola);
+echo "</pre>"
 /* Introducir los datos de partidos en la base de datos
 for ($i = 0; $i < count($partidos);$i++){
 
