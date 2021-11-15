@@ -7,10 +7,10 @@ $partidos = json_decode($contents3, true);
 $provincias = json_decode($contents1, true);
 
 
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "Circumscripcion";
+$servername = "sql480.main-hosting.eu";
+$username = "u850300514_agayoso";
+$password = "x45188189C";
+$dbname = "u850300514_agayoso";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -18,10 +18,11 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
+echo "Connected successfully";
+/*
 $sql = "SELECT * FROM Provincias";
 $result = $conn->query($sql);
-
+*/
 
 /*
 if ($result->num_rows > 0) {
@@ -33,9 +34,6 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 */
-echo "<pre>";
-var_dump($hola);
-echo "</pre>"
 /* Introducir los datos de partidos en la base de datos
 for ($i = 0; $i < count($partidos);$i++){
 
@@ -81,7 +79,7 @@ for ($i = 0; $i < count($provincias);$i++){
 
     $id = $provincias[$i]["id"];
     $nombre = $provincias[$i]["name"];
-    $delegates = $provincias[$i]["delegates"]
+    $delegates = $provincias[$i]["delegates"];
 
 
     $sql = "INSERT INTO Provincias (id, nombre, delegates)

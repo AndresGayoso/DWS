@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "Circumscripcion";
+$servername = "sql480.main-hosting.eu";
+$username = "u850300514_agayoso";
+$password = "x45188189C";
+$dbname = "u850300514_agayoso";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
