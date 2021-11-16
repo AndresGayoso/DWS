@@ -36,18 +36,14 @@ if ($result->num_rows > 0) {
 */
 /* Introducir los datos de partidos en la base de datos
 for ($i = 0; $i < count($partidos);$i++){
-
     $id = $partidos[$i]["id"];
     $nombre = $partidos[$i]["name"];
     $acronym = $partidos[$i]["acronym"];
     $logo = $partidos[$i]["logo"];
     $color = $partidos[$i]["colour"];
-
     $nombre = $conn->escape_string($nombre);
-
     $sql = "INSERT INTO Partidos (id,nombre,acronym,logo,color)
             VALUES ('".$id."','".$nombre."','".$acronym."','".$logo."','".$color."')";
-
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully <br>";
     } else {
@@ -57,16 +53,12 @@ for ($i = 0; $i < count($partidos);$i++){
 */
 /* Introducir los datos de resultados en la base de datos
 for ($i = 0; $i < count($resultado);$i++){
-
     $distrito = $resultado[$i]["district"];
     $partido = $resultado[$i]["party"];
     $votos = $resultado[$i]["votes"];
-
     $partido = $conn->escape_string($partido);
-
     $sql = "INSERT INTO Resultados (distrito,partido,votos)
             VALUES ('".$distrito."','".$partido."','".$votos."')";
-
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully <br>";
     } else {
@@ -76,15 +68,11 @@ for ($i = 0; $i < count($resultado);$i++){
 */
 /* Introducir los datos de provicias en la base de datos
 for ($i = 0; $i < count($provincias);$i++){
-
     $id = $provincias[$i]["id"];
     $nombre = $provincias[$i]["name"];
     $delegates = $provincias[$i]["delegates"];
-
-
     $sql = "INSERT INTO Provincias (id, nombre, delegates)
             VALUES ('".$id."','".$nombre."','".$delegates."')";
-
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully <br>";
     } else {
@@ -95,8 +83,6 @@ for ($i = 0; $i < count($provincias);$i++){
 /*
 $sql = "DELETE FROM Partidos";
 $conn->query($sql);
-
-
 $conn->close();
 /*
 echo "<pre>";
