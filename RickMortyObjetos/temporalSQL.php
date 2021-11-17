@@ -64,6 +64,7 @@ for($i = 0; $i < count($e);$i++){
 }
 */
 
+/*Insertar en la tabla los caracteres con sus episodios
 $count = 0;
 
 for($i = 0;$i< count($c);$i++){
@@ -78,12 +79,9 @@ for($i = 0;$i< count($c);$i++){
         }
     }
 }
-
-
-
-
+*/
 /*
 echo "<pre>";
-var_dump($arrayprueba);
+var_dump($c);
 echo "</pre>";
 */
