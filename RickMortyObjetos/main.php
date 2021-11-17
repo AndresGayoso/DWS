@@ -2,16 +2,21 @@
 include ("Characters.php");
 include ("Location.php");
 include ("Episodes.php");
+include ("DB.php");
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$api_url = "https://dawsonferrer.com/allabres/apis_solutions/rickandmorty/api.php?seed=5284&data=";
+/*
+$api_url = "https://dawsonferrer.com/allabres/apis_solutions/rickandmorty/api.php?seed=8189&data=";
 
 $charactersjson = json_decode(file_get_contents($api_url . "characters"), true);
 $episodesjson = json_decode(file_get_contents($api_url . "episodes"), true);
 $locationsjson = json_decode(file_get_contents($api_url . "locations"), true);
+*/
+
+$charactersjson = DatosCaracteres();
 
 function getSortedCharactersById($characters)
 {
