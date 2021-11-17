@@ -43,7 +43,7 @@ for($i = 0; $i < count($c);$i++){
     }
 }
 */
-
+/* Insertar los datos en la tabla de episodios(sin el array characters)
 for($i = 0; $i < count($e);$i++){
     $id = $e[$i]["id"];
     $name = $e[$i]["name"];
@@ -62,8 +62,28 @@ for($i = 0; $i < count($e);$i++){
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
+*/
+
+$count = 0;
+
+for($i = 0;$i< count($c);$i++){
+    for($x = 0; $x < count($c[$i]["episodes"]);$x++){
+        $sql = "INSERT INTO CharEpis (id, char_id, episode_id) 
+                VALUES('".($count + 1)."','".$c[$i]["id"]."','".$c[$i]["episodes"][$x]."')";
+        if ($conn->query($sql) === TRUE) {
+            echo "New record created successfully <br>";
+            $count++;
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    }
+}
+
+
+
+
 /*
 echo "<pre>";
-var_dump($c);
-echo "</pre>";*/
-
+var_dump($arrayprueba);
+echo "</pre>";
+*/
