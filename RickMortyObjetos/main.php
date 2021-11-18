@@ -8,15 +8,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-/*
-$api_url = "https://dawsonferrer.com/allabres/apis_solutions/rickandmorty/api.php?seed=8189&data=";
-
-$charactersjson = json_decode(file_get_contents($api_url . "characters"), true);
-$episodesjson = json_decode(file_get_contents($api_url . "episodes"), true);
-$locationsjson = json_decode(file_get_contents($api_url . "locations"), true);
-*/
-
 $charactersjson = DatosCaracteres();
+$episodesjson = DatosEpisodios();
+$locationsjson = DatosLocation();
+
 
 function getSortedCharactersById($characters)
 {
@@ -85,7 +80,7 @@ function createLocations($locationsjson) {
 
     for ($i = 0; $i < count($locationsjson); $i++) {
         $locations[$i] = new Locations($locationsjson[$i]["id"], $locationsjson[$i]["name"], $locationsjson[$i]["type"],
-            $locationsjson[$i]["dimension"], $locationsjson[$i]["created"], $locationsjson[$i]["residents"]);
+            $locationsjson[$i]["dimension"], $locationsjson[$i]["created"]);
     }
 
     return $locations;
@@ -95,7 +90,7 @@ function createEpisodes($episodesjson) {
 
     for ($i = 0; $i < count($episodesjson); $i++) {
         $episodes[$i] = new Episodes($episodesjson[$i]["id"], $episodesjson[$i]["name"], $episodesjson[$i]["air_date"], $episodesjson[$i]["episode"],
-            $episodesjson[$i]["created"], $episodesjson[$i]["characters"]);
+            $episodesjson[$i]["created"]);
     }
 
     return $episodes;

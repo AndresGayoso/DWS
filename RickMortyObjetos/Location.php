@@ -9,14 +9,13 @@ class Locations {
     private $created;
     private $residents; // Array
 
-    public function __construct($id, $name, $type, $dimensio, $created, array $residents)
+    public function __construct($id, $name, $type, $dimensio, $created)
     {
         $this->id = $id;
         $this->name = $name;
         $this->type = $type;
         $this->dimensio = $dimensio;
         $this->created = $created;
-        $this->residents = $residents;
     }
 
     /**

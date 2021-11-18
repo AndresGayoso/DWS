@@ -63,13 +63,33 @@ for($i = 0; $i < count($e);$i++){
     }
 }
 */
+/* Insertar los datos en la tabla de location (sin el array residents)
+for($i = 0; $i < count($l);$i++){
+    $id = $l[$i]["id"];
+    $name = $l[$i]["name"];
+    $type = $l[$i]["type"];
+    $dimension = $l[$i]["dimension"];
+    $created = $l[$i]["created"];
 
+    $name = $conn->escape_string($name);
+    $dimension = $conn->escape_string($dimension);
+
+    $sql = "INSERT INTO Locations (id,name,type,dimension,created)
+            VALUES ('".$id."','".$name."','".$type."','".$dimension."','".$created."')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully <br>";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+*/
 /*Insertar en la tabla los caracteres con sus episodios
 $count = 0;
 
 for($i = 0;$i< count($c);$i++){
     for($x = 0; $x < count($c[$i]["episodes"]);$x++){
-        $sql = "INSERT INTO CharEpis (id, char_id, episode_id) 
+        $sql = "INSERT INTO CharEpis (id, char_id, episodes_id)
                 VALUES('".($count + 1)."','".$c[$i]["id"]."','".$c[$i]["episodes"][$x]."')";
         if ($conn->query($sql) === TRUE) {
             echo "New record created successfully <br>";
@@ -82,6 +102,6 @@ for($i = 0;$i< count($c);$i++){
 */
 /*
 echo "<pre>";
-var_dump($c);
+var_dump($e);
 echo "</pre>";
 */

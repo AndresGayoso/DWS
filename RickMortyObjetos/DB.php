@@ -33,17 +33,10 @@ function DatosCaracteres(){
     $sql = "SELECT * FROM CharEpis";
     $resultados = $conn->query($sql);
 
-/*
-    for ($i = 0; $i<count($resultado);$i++){
-        for ($x = 0; $row = $resultados->fetch_assoc();$x++){
-
-        }
-    }
-*/
     for($i = 0; $row = $resultados->fetch_assoc();$i++){
         for($x = 0; $x < count($resultado);$x++){
             if($row["char_id"] == $resultado[$x]["id"]){
-                $resultado[$x]["episodes"][] = $row["episode_id"];
+                $resultado[$x]["episodes"][] = $row["episodes_id"];
             }
         }
     }
@@ -51,4 +44,40 @@ function DatosCaracteres(){
 
     return $resultado;
 
+}
+
+function DatosEpisodios(){
+    global $conn;
+
+    $resultado = [];
+    $sql = "SELECT * FROM Episodios";
+    $resultados = $conn->query($sql);
+
+    for($i = 0; $row = $resultados->fetch_assoc();$i++){
+        $resultado[$i]["id"] = $row["id"];
+        $resultado[$i]["name"] = $row["name"];
+        $resultado[$i]["air_date"] = $row["air_date"];
+        $resultado[$i]["episode"] = $row["episode"];
+        $resultado[$i]["created"] = $row["created"];
+    }
+
+    return $resultado;
+}
+
+function DatosLocation(){
+    global $conn;
+
+    $resultado = [];
+    $sql = "SELECT * FROM Locations";
+    $resultados = $conn->query($sql);
+
+    for($i = 0; $row = $resultados->fetch_assoc();$i++){
+        $resultado[$i]["id"] = $row["id"];
+        $resultado[$i]["name"] = $row["name"];
+        $resultado[$i]["type"] = $row["type"];
+        $resultado[$i]["dimension"] = $row["dimension"];
+        $resultado[$i]["created"] = $row["created"];
+    }
+
+    return $resultado;
 }
