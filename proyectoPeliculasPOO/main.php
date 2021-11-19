@@ -1,4 +1,27 @@
 <?php
-$api_url = "https://api.themoviedb.org/3/movie/550?api_key={api_key}&callback=test";
+/*
+Filtrar por rating(seguro),
+Filtrar por categoria(seguro),
+Filtrar por año (antigua a nueva o viceversa || probar),
+Filtrar por director (probar),
+Filtrar por edad (mayor a menos o viceversa || probar)
+*/
 
-$charactersjson = json_decode(file_get_contents($api_url . "characters"), true);
+/*
+ DB:
+Tabla Peliculas
+id int (identificador PK)
+nombre string (nombre pelicula)
+duracion string (tiempo pelicula formato h : m
+director string (nombre director)
+rating float (valoracion)
+estreno int (año)
+categoria string (la categoria principal)
+edad_min int (edad minima para ver la pelicula)
+icono string (poner url del icono)
+imagen string (poner url de la imagen)
+ */
+
+echo "<pre>";
+var_dump();
+echo "</pre>";
