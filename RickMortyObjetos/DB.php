@@ -13,22 +13,10 @@ echo "Connected successfully";
 function DatosCaracteres(){
     global $conn;
 
-    $resultado = [];
     $sql = "SELECT * FROM Caracteres";
     $resultados = $conn->query($sql);
 
-    for($i = 0; $row = $resultados->fetch_assoc();$i++){
-        $resultado[$i]["id"] = $row["id"];
-        $resultado[$i]["name"] = $row["name"];
-        $resultado[$i]["status"] = $row["status"];
-        $resultado[$i]["species"] = $row["species"];
-        $resultado[$i]["type"] = $row["type"];
-        $resultado[$i]["gender"] = $row["gender"];
-        $resultado[$i]["origin"] = $row["origin"];
-        $resultado[$i]["location"] = $row["location"];
-        $resultado[$i]["image"] = $row["image"];
-        $resultado[$i]["created"] = $row["created"];
-    }
+    $resultado = $resultados->fetch_all(MYSQLI_ASSOC);
 
     $sql = "SELECT * FROM CharEpis";
     $resultados = $conn->query($sql);
@@ -41,25 +29,16 @@ function DatosCaracteres(){
         }
     }
 
-
     return $resultado;
-
 }
 
 function DatosEpisodios(){
     global $conn;
 
-    $resultado = [];
     $sql = "SELECT * FROM Episodios";
     $resultados = $conn->query($sql);
 
-    for($i = 0; $row = $resultados->fetch_assoc();$i++){
-        $resultado[$i]["id"] = $row["id"];
-        $resultado[$i]["name"] = $row["name"];
-        $resultado[$i]["air_date"] = $row["air_date"];
-        $resultado[$i]["episode"] = $row["episode"];
-        $resultado[$i]["created"] = $row["created"];
-    }
+    $resultado = $resultados->fetch_all(MYSQLI_ASSOC);
 
     return $resultado;
 }
@@ -67,17 +46,10 @@ function DatosEpisodios(){
 function DatosLocation(){
     global $conn;
 
-    $resultado = [];
     $sql = "SELECT * FROM Locations";
     $resultados = $conn->query($sql);
 
-    for($i = 0; $row = $resultados->fetch_assoc();$i++){
-        $resultado[$i]["id"] = $row["id"];
-        $resultado[$i]["name"] = $row["name"];
-        $resultado[$i]["type"] = $row["type"];
-        $resultado[$i]["dimension"] = $row["dimension"];
-        $resultado[$i]["created"] = $row["created"];
-    }
+    $resultado = $resultados->fetch_all(MYSQLI_ASSOC);
 
     return $resultado;
 }
