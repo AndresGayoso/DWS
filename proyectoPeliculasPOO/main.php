@@ -13,24 +13,30 @@ Tabla Peliculas
 id int (identificador PK)
 nombre varchar(25) (nombre pelicula)
 duracion varchar(25) (tiempo pelicula formato h : m)
-director int (id FK tabla director(id))
+director int (id ref Directores FK)
 rating float (valoracion)
 estreno int (año)
-categoria int (id FK tabla categoria(id))
 edad_min int (edad minima para ver la pelicula)
 
 Tabla Directores
-id int(id director)
+id int(id director PK)
 nombre varchar(25) (nombre director)
 
 Tabla Multimedia
-id int (id imagen)
-peliculas_id int (id pelicula)
+id int (id imagen PK)
+peliculas_id int (id pelicula FK)
 imagen varchar(200) (url de la imagen)
 
-Tabla Categoria
-id int (id categoria)
+Tabla Categorias
+id int (id categoria PK)
 categoria varchar(25) (nombre categoria)
+
+
+Tabla CategoriaPeliclas
+id (PK)
+pelicula_id (id ref tabla pelicula FK)
+categoria_id (id ref tabal categorias FK)
+
  */
 
 
