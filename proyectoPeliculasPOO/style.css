@@ -1,0 +1,97 @@
+body {
+    background-color: #343434;
+}
+
+nav{
+    margin-top: -8px;
+    margin-left: -8px;
+    margin-right: -8px;
+    background: black;
+    height: 60px;
+}
+
+.select {
+    max-width: 150px;
+    position: relative;
+    padding-top: 12px;
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+.select select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.select select {
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+    padding: 7px 15px;
+    height: 42px;
+    outline: 0;
+    border: 0;
+    border-radius: 0;
+    background: #f0f0f0;
+    color: black;
+    font-size: 1em;
+    color: black;
+    font-family:
+            'Quicksand', sans-serif;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.25s ease;
+}
+
+.select select:hover {
+    background: lightgray;
+}
+
+/*
+Creamos la fecha que aparece a la izquierda del select.
+Realmente este elemento es un cuadrado que sólo tienen
+dos bordes con color y que giramos con transform: rotate(-45deg);
+*/
+.select i {
+    position: absolute;
+    right: 20px;
+    top: calc(50% - 6px);
+    width: 15px;
+    height: 15px;
+    display: block;
+    border-left: 4px solid grey;
+    border-bottom: 4px solid grey;
+    transform: rotate(-45deg);
+    /* Giramos el cuadrado */
+}
+
+.select:hover i {
+    margin-top: 3px;
+    border-top: 4px solid grey;
+    border-bottom: 0px;
+}
+
+.flex-item {
+    margin: 5px;
+    width: 300px;
+    height: 400px;
+}
+img{
+    width: 250px;
+    height: 250px;
+}
+
+.cards{
+    margin: 0 auto;
+}
+#boton{
+    width: 30%;
+    margin-top: 5%;
+    font-size: small;
+}
+
+.imagen-lista img{
+    max-width: 40px;
+}

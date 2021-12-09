@@ -231,7 +231,6 @@ $charactersmapp = mapp($characters, $locations, $episodes);
             <div class="row">
 
                 <?php
-
                 foreach ($charactersmapp as $i => $key) {
                     render($key);
                 }
