@@ -15,7 +15,6 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully";
 
 
 //Extraer los objetos que necesito de las tablas
@@ -40,6 +39,11 @@ $sql = "Select * from Multimedia";
 $resultadoMult = $conn->query($sql);
 $Multimedia_array = $resultadoMult->fetch_all(MYSQLI_ASSOC);
 
+//Directores
+$sql = "Select * from Directores";
+$resultadoDir = $conn->query($sql);
+$Directores_array = $resultadoDir->fetch_all(MYSQLI_ASSOC);
+
 //Categorias-Pelicula
 $sql = "Select * from CatPel";
 $resultadoCatPel = $conn->query($sql);
@@ -50,6 +54,10 @@ $CatPel_array = $resultadoCatPel->fetch_all(MYSQLI_ASSOC);
 function createObjectPelicula($arrayPel)
 {
     for ($i = 0; $i < count($arrayPel); $i++) {
+        //TP significa para todos los publicos
+        if ($arrayPel[$i]["edad_min"] == 0){
+            $arrayPel[$i]["edad_min"] = "TP";
+        }
         $OBJ_Peliculas[$i] = new Pelicula($arrayPel[$i]['id'], $arrayPel[$i]['nombre'],
             $arrayPel[$i]['duracion'], $arrayPel[$i]['director'], $arrayPel[$i]['rating'],
             $arrayPel[$i]['estreno'], $arrayPel[$i]['edad_min']);
@@ -112,6 +120,22 @@ function urlMultimedia($id){
     return $urlPortada;
 }
 
+///Extraer el array con los directores y sus nombres de la pelicula enviada "id"
+function NomDirector($id){
+    global $conn;
+
+    $sql = "select d.nombre from Directores d
+            inner join Peliculas p on d.id = p.director
+            where p.id = ".$id.";";
+
+    $resultado = $conn->query($sql);
+    $director = $resultado->fetch_all(MYSQLI_ASSOC);
+
+    $NomDirector = $director[0]["nombre"];
+
+    return $NomDirector;
+}
+
 
 //Variables para llamar a las funciones de los objetos
 $arrayPelOBJ = createObjectPelicula($Peliculas_array);
@@ -128,22 +152,19 @@ function insertActores(Pelicula $pelicula){
 function insertMultimedia(Pelicula $pelicula){
     $pelicula->setPortada(urlMultimedia($pelicula->getId()));
 }
+//Insertar el string con el nombre del directoir en la pelicula enviada "pelicula"
+function insertDirector(Pelicula $pelicula){
+    $pelicula->setDirector(NomDirector($pelicula->getId()));
+}
 
-//Funcion para rellenar todos los objetos con sus actores,categorias y la portada
-function InsertCatActMult($arrayPelOBJ){
+//Funcion para rellenar todos los objetos con sus actores, categorias, la portada y director
+function InsertCatActMultDir($arrayPelOBJ){
     for ($i = 0; $i < count($arrayPelOBJ);$i++){
         insertCategoria($arrayPelOBJ[$i]);
         insertActores($arrayPelOBJ[$i]);
         insertMultimedia($arrayPelOBJ[$i]);
+        insertDirector($arrayPelOBJ[$i]);
     }
 
     return $arrayPelOBJ;
 }
-
-/* Prueba
-$x = InsertCatActMult($arrayPelOBJ);
-echo "<pre>";
-var_dump($x);
-echo "</pre>";
-
-*/

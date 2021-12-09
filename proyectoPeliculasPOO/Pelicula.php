@@ -38,6 +38,11 @@ class Pelicula
         return $this->director;
     }
 
+    public function setDirector($director): void
+    {
+        $this->director = $director;
+    }
+
     public function getRating()
     {
         return $this->rating;

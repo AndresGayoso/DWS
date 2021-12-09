@@ -11,11 +11,13 @@ nav{
 }
 
 .select {
-    max-width: 150px;
+    display: inline-block;
+    max-width: 155px;
     position: relative;
     padding-top: 12px;
     padding-left: 15px;
     margin-bottom: 20px;
+    width: 155px;
 }
 
 .select select {
@@ -49,11 +51,6 @@ nav{
     background: lightgray;
 }
 
-/*
-Creamos la fecha que aparece a la izquierda del select.
-Realmente este elemento es un cuadrado que sólo tienen
-dos bordes con color y que giramos con transform: rotate(-45deg);
-*/
 .select i {
     position: absolute;
     right: 20px;
@@ -68,6 +65,66 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
 }
 
 .select:hover i {
+    margin-top: 3px;
+    border-top: 4px solid grey;
+    border-bottom: 0px;
+}
+
+.select2 {
+    display: inline-block;
+    max-width: 190px;
+    position: relative;
+    padding-top: 12px;
+    padding-left: 15px;
+    margin-right: 13px;
+    margin-bottom: 20px;
+    width: 190px;
+}
+
+.select2 select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.select2 select {
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+    padding: 7px 15px;
+    height: 42px;
+    outline: 0;
+    border: 0;
+    border-radius: 0;
+    background: #f0f0f0;
+    color: black;
+    font-size: 1em;
+    color: black;
+    font-family:
+            'Quicksand', sans-serif;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.25s ease;
+}
+
+.select2 select:hover {
+    background: lightgray;
+}
+.select2 i {
+    position: absolute;
+    right: 20px;
+    top: calc(50% - 6px);
+    width: 15px;
+    height: 15px;
+    display: block;
+    border-left: 4px solid grey;
+    border-bottom: 4px solid grey;
+    transform: rotate(-45deg);
+    /* Giramos el cuadrado */
+}
+
+.select2:hover i {
     margin-top: 3px;
     border-top: 4px solid grey;
     border-bottom: 0px;
@@ -95,5 +152,24 @@ img{
 .imagen-lista img{
     max-width: 40px;
 }
+
+#submit{
+    background: #f0f0f0;
+    color: black;
+    cursor: pointer;
+    padding: 7px 15px;
+    border-radius: 10px;
+    outline: 0;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    height: 42px;
+    font-size: 1em;
+    font-family:
+            'Quicksand', sans-serif;
+    max-width: 150px;
+}
+#submit:hover{
+    background: lightgray;
+}
+
 
 /*Mirar si el mapeado nuevo hay que darle algun estilo nuevo a la informacion*/
