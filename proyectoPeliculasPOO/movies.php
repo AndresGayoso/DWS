@@ -19,7 +19,7 @@ include ("sort.php");
 
 <body class="bg-dark">
     <nav>
-        <form action="main.php" method="get">
+        <form action="movies.php" method="get">
             <div class="select">
                 <?php
                 $seleccion = $_GET["seleccion"]
@@ -39,6 +39,8 @@ include ("sort.php");
                 global $Categorias_array;
                 global $Directores_array;
                 global $arrayOBJComplete;
+
+                $selectedPelId = "";
 
                 if (isset($_GET["seleccion"])){
                     switch ($seleccion){
@@ -174,9 +176,8 @@ include ("sort.php");
             <button id="submit" type="submit">Filtrar</button>
         </form>
     </nav>
-    <div style="margin-top: 3%;margin-left: 4%;" class="card-group">
+    <div style="margin-top: 3%;" class="card-group">
        <?php
-       global $arraySorted;
 
        for ($i = 0; $i < count($arraySorted);$i++){
            MapObject($arraySorted[$i]);

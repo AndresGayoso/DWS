@@ -10,12 +10,12 @@ function MapObject($objeto)
         }elseif ($alert == 18){
             $alert = "danger";
         }
-        echo('<div class="col-sm-6 col-lg-auto">
+        echo('<div class="col-sm-8 col-lg-auto">
             <div class="flex-item card">
                 <img class="card-img-top" src="'.$objeto->getPortada().'">
                 <div class="card-body">
                     <div class="card-title">
-                        <h5 class="text-center">'.$objeto->getNombre().' ('.$objeto->getEstreno().')</h5>
+                        <a id="link" href="singleMovie.php?id='.$objeto->getId().'"><h5 class="text-center">'.$objeto->getNombre().' ('.$objeto->getEstreno().')</h5></a>
                     </div>
                     <div class="card-subtitle">
                         '.$objeto->getRating().' <i id="star" class="far fa-star"></i>
