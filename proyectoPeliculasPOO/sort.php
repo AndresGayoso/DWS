@@ -1,7 +1,6 @@
 <?php
 include ("DB.php");
 
-
 function SortByYearAscending(){
     global $conn;
 

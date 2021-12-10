@@ -29,3 +29,13 @@ categoria varchar(25) (nombre categoria)
 Tabla CategoriaPeliclas
 id (PK)
 pelicula_id (id ref tabla pelicula FK)
+
+$alertclass = "success"
+switch ($character->getEdadMin()) {
+        case < 18:
+            $alertClass = "danger";
+            break;
+        case "unknown":
+            $alertClass = "warning";
+            break;
+    }

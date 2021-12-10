@@ -2,7 +2,6 @@
 
 include ("Pelicula.php");
 
-
 //Conectarse a la base de datos
 $servername = "sql480.main-hosting.eu";
 $username = "u850300514_agayoso";
@@ -168,3 +167,7 @@ function InsertCatActMultDir($arrayPelOBJ){
 
     return $arrayPelOBJ;
 }
+
+//Objeto Completo
+
+$arrayOBJComplete = InsertCatActMultDir($arrayPelOBJ);
