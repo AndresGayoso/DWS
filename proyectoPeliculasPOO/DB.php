@@ -104,12 +104,12 @@ function arrayActores($id){
 }
 
 //Extraer un string con la url de la portada de la pelicula enviada "id"
-function urlMultimedia($id){
+function portadaMultimedia($id){
     global $conn;
 
     $sql = "select m.url from Multimedia m
             inner join Peliculas p on m.pelicula_id = p.id
-            where p.id =".$id.";";
+            where p.id =".$id." and m.type like 'portada';";
 
     $resultado = $conn->query($sql);
     $url = $resultado->fetch_all(MYSQLI_ASSOC);
@@ -135,6 +135,21 @@ function NomDirector($id){
     return $NomDirector;
 }
 
+function trailerMultimedia($id){
+    global $conn;
+
+    $sql = "select m.url from Multimedia m
+            inner join Peliculas p on m.pelicula_id = p.id
+            where p.id =".$id." and m.type like 'trailer';";
+
+    $resultado = $conn->query($sql);
+    $trailer = $resultado->fetch_all(MYSQLI_ASSOC);
+
+    $urlTrailer = $trailer[0]["url"];
+
+    return $urlTrailer;
+}
+
 
 //Variables para llamar a las funciones de los objetos
 $arrayPelOBJ = createObjectPelicula($Peliculas_array);
@@ -149,11 +164,14 @@ function insertActores(Pelicula $pelicula){
 }
 //Insertar el string con la url de la portada en la pelicula enviada "pelicula"
 function insertMultimedia(Pelicula $pelicula){
-    $pelicula->setPortada(urlMultimedia($pelicula->getId()));
+    $pelicula->setPortada(portadaMultimedia($pelicula->getId()));
 }
 //Insertar el string con el nombre del directoir en la pelicula enviada "pelicula"
 function insertDirector(Pelicula $pelicula){
     $pelicula->setDirector(NomDirector($pelicula->getId()));
+}
+function insertTrailer(Pelicula $pelicula){
+    $pelicula->setTrailer(trailerMultimedia($pelicula->getId()));
 }
 
 //Funcion para rellenar todos los objetos con sus actores, categorias, la portada y director
@@ -163,6 +181,7 @@ function InsertCatActMultDir($arrayPelOBJ){
         insertActores($arrayPelOBJ[$i]);
         insertMultimedia($arrayPelOBJ[$i]);
         insertDirector($arrayPelOBJ[$i]);
+        insertTrailer($arrayPelOBJ[$i]);
     }
 
     return $arrayPelOBJ;

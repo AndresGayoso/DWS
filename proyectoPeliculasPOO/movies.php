@@ -12,7 +12,7 @@ include ("sort.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peliculas</title>
     <script src="https://kit.fontawesome.com/58a9273ff1.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleMovies.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>

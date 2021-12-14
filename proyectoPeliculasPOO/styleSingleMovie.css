@@ -1,0 +1,86 @@
+body{
+    background-color: #343434;
+    color: #FFDB58;
+}
+.titulo{
+    display: inline-block;
+    position: absolute;
+    margin-top: 1.5%;
+    left: 32%;
+}
+.informacion{
+    display: inline-block;
+    position: absolute;
+    left: 32%;
+}
+.informacion p{
+    display: inline-block;
+    color: white;
+}
+.informacion img{
+    width: 30px;
+    height: 30px;
+    margin-top: -20px;
+}
+.actor h3{
+    color: white;
+}
+.imagenes{
+    display: inline-block;
+    position: absolute;
+    left: 32%;
+    display: flex;
+    margin-top: -18%;
+}
+.h2{
+    top: 95%;
+    position: absolute;
+}
+.trailer{
+    position: absolute;
+    top: 16%;
+    left: 50%;
+}
+.back{
+    position: absolute;
+    margin-top: 0.5%;
+    left: 1670px;
+    background-color: #FFDB58;
+    border: 3px solid black;
+    font-family: 'Quicksand', sans-serif;
+    border-radius: 10px;
+    font-size: 1vw;
+    width: 80px;
+    height: 35px;
+    cursor: pointer;
+}
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .portada {
+        width: 30%;
+        height: 47vw;
+    }
+    .titulo {
+        font-size: 1.4vw;
+    }
+    .informacion {
+        width: 16.66%;
+        margin-top: 7%;
+    }
+    .h2{
+        font-size: 1.8vw;
+        margin-top: 5%;
+    }
+    .actor img{
+        width: 400px;
+        height: 230px;
+    }
+    .actor {
+        width: 30%;
+        margin-top: 3%;
+    }
+    .trailer iframe{
+        width: 45vw;
+        height: 22vw;
+    }
+}

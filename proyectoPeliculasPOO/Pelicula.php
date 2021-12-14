@@ -14,6 +14,7 @@ class Pelicula
         $this->estreno = $estreno;
         $this->edad_min = $edad_min;
         $this->portada = "";
+        $this->trailer = "";
         $this->Actores = [];
         $this->Categorias = [];
     }
@@ -87,6 +88,17 @@ class Pelicula
     {
         $this->portada = $portada;
     }
+
+    public function getTrailer(): string
+    {
+        return $this->trailer;
+    }
+
+    public function setTrailer(string $trailer): void
+    {
+        $this->trailer = $trailer;
+    }
+
 
 
 
