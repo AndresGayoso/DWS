@@ -1,5 +1,6 @@
 body {
     background-color: #343434;
+    width: 99.5%;
 }
 
 nav{
@@ -8,6 +9,9 @@ nav{
     margin-right: -8px;
     background: black;
     height: 60px;
+}
+form{
+    display: inline-block;
 }
 
 .select {
@@ -193,6 +197,36 @@ img{
 
 #link:hover{
     color: dodgerblue;
+}
+
+#users{
+    background: #f0f0f0;
+    color: black;
+    cursor: pointer;
+    padding: 7px 15px;
+    border-radius: 10px;
+    outline: 0;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    height: 42px;
+    font-size: 1em;
+    font-family:
+            'Quicksand', sans-serif;
+    max-width: 150px;
+}
+#users:hover{
+    background: lightgray;
+}
+
+.posLogin{
+    float: right;
+    margin-top: 0.7%;
+    margin-right: 0.5%;
+}
+
+.posSignup{
+    float: right;
+    margin-top: 0.7%;
+    margin-right: 0.5%;
 }
 
 
