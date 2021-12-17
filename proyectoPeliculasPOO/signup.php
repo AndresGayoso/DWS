@@ -17,11 +17,53 @@
         <span class="underline pos2"></span>
         <input class="input posicion3" name="confirmar" placeholder="Confirmar Contraseña" type="text">
         <span class="underline pos3"></span>
-        <input class="submit" type="submit" name="submit" value="Registrase">
+        <input class="submit" type="submit" name="submit" value="Registrarse">
     </form>
     <a href="movies.php">
         <button class="volver">Volver</button>
     </a>
+    <?php
+    include ("DB.php");
+        // comprobaciones
+        $validuser = "";
+        $validpasswd = "";
+
+
+        $user = $_POST["usuario"];
+        if(isset($user)){
+            if ($user != ""){
+                if (strlen($user) < 25){
+                    $validuser = $user;
+                }else{
+                    echo '<p class="p1">*Debe tener como maximo 25 caracteres</p>';
+                }
+            }else{
+                echo '<p class="p1">*No debes dejar la celda vacia</p>';
+            }
+        }
+        $password = $_POST["contraseña"];
+        $password2 = $_POST["confirmar"];
+        if(isset($password)){
+            if ($password != "" && $password2 != ""){
+                if ($password == $password2){
+                    $validpasswd = $password;
+                }else{
+                    echo '<p class="p3">*La contraseña no coincide</p>';
+                }
+            }else{
+                if ($password == ""){
+                    echo '<p class="p2">*No debes dejar la celda vacia</p>';
+                }else{
+                    echo '<p class="p3">*No debes dejar la celda vacia</p>';
+                }
+            }
+        }
+        if(isset($user) && $password){
+            if($validuser != "" && $validpasswd != ""){
+                InsertUsuarios($validuser,$validpasswd);
+            }
+        }
+    ?>
 </body>
 
 </html>

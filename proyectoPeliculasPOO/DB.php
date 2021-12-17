@@ -190,3 +190,14 @@ function InsertCatActMultDir($arrayPelOBJ){
 //Objeto Completo
 
 $arrayOBJComplete = InsertCatActMultDir($arrayPelOBJ);
+
+function InsertUsuarios($user,$password){
+    global $conn;
+
+    $sql = "Insert into Usuarios (usuario,contraseña) values ('".$user."','".$password."')";
+    if ($conn->query($sql) == true){
+        return header("Location: movies.php");
+    }else{
+        return header("Location: signup.php");
+    }
+}
