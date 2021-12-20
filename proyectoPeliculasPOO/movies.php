@@ -178,7 +178,7 @@ include ("sort.php");
         <a href="signup.php">
             <button id="users" class="posSignup">Sign Up</button>
         </a>
-        <a href="">
+        <a href="login.php">
             <button id="users" class="posLogin">Log In</button>
         </a>
     </nav>

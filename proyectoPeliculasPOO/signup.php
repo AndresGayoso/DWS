@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="estilos/styleSignUp.css">
+    <link rel="stylesheet" href="estilos/styleUsers.css">
 </head>
 
 <body>
@@ -46,7 +46,7 @@
         if(isset($password)){
             if ($password != "" && $password2 != ""){
                 if ($password == $password2){
-                    $validpasswd = $password;
+                    $validpasswd = password_hash($password,PASSWORD_DEFAULT);
                 }else{
                     echo '<p class="p3">*La contraseña no coincide</p>';
                 }
@@ -58,7 +58,7 @@
                 }
             }
         }
-        if(isset($user) && $password){
+        if(isset($user) && isset($password)){
             if($validuser != "" && $validpasswd != ""){
                 InsertUsuarios($validuser,$validpasswd);
             }

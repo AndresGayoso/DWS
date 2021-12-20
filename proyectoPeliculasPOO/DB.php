@@ -1,6 +1,6 @@
 <?php
 
-include ("Pelicula.php");
+include("Pelicula.php");
 
 //Conectarse a la base de datos
 $servername = "sql480.main-hosting.eu";
@@ -54,7 +54,7 @@ function createObjectPelicula($arrayPel)
 {
     for ($i = 0; $i < count($arrayPel); $i++) {
         //TP significa para todos los publicos
-        if ($arrayPel[$i]["edad_min"] == 0){
+        if ($arrayPel[$i]["edad_min"] == 0) {
             $arrayPel[$i]["edad_min"] = "TP";
         }
         $OBJ_Peliculas[$i] = new Pelicula($arrayPel[$i]['id'], $arrayPel[$i]['nombre'],
@@ -67,17 +67,18 @@ function createObjectPelicula($arrayPel)
 //Insertar datos de otras tablas en nuestro objeto
 
 //Extraer el array con las categorias de la pelicula enviada "id"
-function arrayCatPel($id){
+function arrayCatPel($id)
+{
     global $conn;
 
     $sql = "select c.categoria from Categorias c
             inner join CatPel ca on c.id = ca.categoria_id
-            where ca.pelicula_id =".$id.";";
+            where ca.pelicula_id =" . $id . ";";
 
     $resultado = $conn->query($sql);
     $categorias = $resultado->fetch_all(MYSQLI_ASSOC);
 
-    for($i = 0; $i < count($categorias);$i++){
+    for ($i = 0; $i < count($categorias); $i++) {
         $arrayCat[] = $categorias[$i]["categoria"];
     }
 
@@ -85,17 +86,18 @@ function arrayCatPel($id){
 }
 
 ///Extraer el array con los actores y sus fotos de la pelicula enviada "id"
-function arrayActores($id){
+function arrayActores($id)
+{
     global $conn;
 
     $sql = "select a.actor,a.foto from Actores a
             inner join Peliculas p on a.pel_id = p.id
-            where p.id =".$id.";";
+            where p.id =" . $id . ";";
 
     $resultado = $conn->query($sql);
     $actores = $resultado->fetch_all(MYSQLI_ASSOC);
 
-    for($i = 0; $i < count($actores);$i++){
+    for ($i = 0; $i < count($actores); $i++) {
         $arrayAct[$i]["nombre"] = $actores[$i]["actor"];
         $arrayAct[$i]["foto"] = $actores[$i]["foto"];
     }
@@ -104,12 +106,13 @@ function arrayActores($id){
 }
 
 //Extraer un string con la url de la portada de la pelicula enviada "id"
-function portadaMultimedia($id){
+function portadaMultimedia($id)
+{
     global $conn;
 
     $sql = "select m.url from Multimedia m
             inner join Peliculas p on m.pelicula_id = p.id
-            where p.id =".$id." and m.type like 'portada';";
+            where p.id =" . $id . " and m.type like 'portada';";
 
     $resultado = $conn->query($sql);
     $url = $resultado->fetch_all(MYSQLI_ASSOC);
@@ -120,12 +123,13 @@ function portadaMultimedia($id){
 }
 
 ///Extraer el array con los directores y sus nombres de la pelicula enviada "id"
-function NomDirector($id){
+function NomDirector($id)
+{
     global $conn;
 
     $sql = "select d.nombre from Directores d
             inner join Peliculas p on d.id = p.director
-            where p.id = ".$id.";";
+            where p.id = " . $id . ";";
 
     $resultado = $conn->query($sql);
     $director = $resultado->fetch_all(MYSQLI_ASSOC);
@@ -135,12 +139,13 @@ function NomDirector($id){
     return $NomDirector;
 }
 
-function trailerMultimedia($id){
+function trailerMultimedia($id)
+{
     global $conn;
 
     $sql = "select m.url from Multimedia m
             inner join Peliculas p on m.pelicula_id = p.id
-            where p.id =".$id." and m.type like 'trailer';";
+            where p.id =" . $id . " and m.type like 'trailer';";
 
     $resultado = $conn->query($sql);
     $trailer = $resultado->fetch_all(MYSQLI_ASSOC);
@@ -155,28 +160,38 @@ function trailerMultimedia($id){
 $arrayPelOBJ = createObjectPelicula($Peliculas_array);
 
 //Insertar el array de categorias en la pelicula enviada "pelicula"
-function insertCategoria(Pelicula $pelicula){
+function insertCategoria(Pelicula $pelicula)
+{
     $pelicula->setCategorias(arrayCatPel($pelicula->getId()));
 }
+
 //Insertar el array de actores en la pelicula enviada "pelicula"
-function insertActores(Pelicula $pelicula){
+function insertActores(Pelicula $pelicula)
+{
     $pelicula->setActores(arrayActores($pelicula->getId()));
 }
+
 //Insertar el string con la url de la portada en la pelicula enviada "pelicula"
-function insertMultimedia(Pelicula $pelicula){
+function insertMultimedia(Pelicula $pelicula)
+{
     $pelicula->setPortada(portadaMultimedia($pelicula->getId()));
 }
+
 //Insertar el string con el nombre del directoir en la pelicula enviada "pelicula"
-function insertDirector(Pelicula $pelicula){
+function insertDirector(Pelicula $pelicula)
+{
     $pelicula->setDirector(NomDirector($pelicula->getId()));
 }
-function insertTrailer(Pelicula $pelicula){
+
+function insertTrailer(Pelicula $pelicula)
+{
     $pelicula->setTrailer(trailerMultimedia($pelicula->getId()));
 }
 
 //Funcion para rellenar todos los objetos con sus actores, categorias, la portada y director
-function InsertCatActMultDir($arrayPelOBJ){
-    for ($i = 0; $i < count($arrayPelOBJ);$i++){
+function InsertCatActMultDir($arrayPelOBJ)
+{
+    for ($i = 0; $i < count($arrayPelOBJ); $i++) {
         insertCategoria($arrayPelOBJ[$i]);
         insertActores($arrayPelOBJ[$i]);
         insertMultimedia($arrayPelOBJ[$i]);
@@ -191,13 +206,43 @@ function InsertCatActMultDir($arrayPelOBJ){
 
 $arrayOBJComplete = InsertCatActMultDir($arrayPelOBJ);
 
-function InsertUsuarios($user,$password){
+function InsertUsuarios($user, $password)
+{
     global $conn;
 
-    $sql = "Insert into Usuarios (usuario,contraseña) values ('".$user."','".$password."')";
-    if ($conn->query($sql) == true){
+    $sql = "Insert into Usuarios (usuario,contraseña) values ('" . $user . "','" . $password . "')";
+    if ($conn->query($sql) == true) {
         return header("Location: movies.php");
-    }else{
-        return header("Location: signup.php");
+    } else {
+        echo "<script>
+                    window.alert('El usuario ya esta registrado');
+                </script>";
     }
+}
+function searchUsuarios($user, $password)
+{
+    global $conn;
+
+    $sql = "Select usuario,contraseña from Usuarios where usuario like '".$user."'";
+    $resultado = $conn->query($sql);
+    $usuario = $resultado->fetch_all(MYSQLI_ASSOC);
+
+    $comprobar = password_verify($password,$usuario[0]["contraseña"]);
+
+    if ($user == $usuario[0]["usuario"]){
+        if ($comprobar == true){
+            return header("Location: movies.php");
+        }else{
+            echo "<script>
+                window.alert('El usuario o la contraseña no son correctas');
+            </script>";
+        }
+    }else{
+        echo "<script>
+           window.alert('El usuario o la contraseña no son correctas');
+         </script>";
+    }
+
+
+
 }
