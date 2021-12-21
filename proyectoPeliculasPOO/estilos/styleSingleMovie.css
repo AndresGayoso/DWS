@@ -41,7 +41,7 @@ body{
     top: 16%;
     left: 50%;
 }
-.back{
+.back {
     position: absolute;
     margin-top: 0.5%;
     left: 1670px;
@@ -53,6 +53,22 @@ body{
     width: 80px;
     height: 35px;
     cursor: pointer;
+}
+.imgUser{
+    display: inline-block;
+    margin-left: 3%;
+}
+.user{
+    display: inline-block;
+}
+.comentario{
+    position: relative;
+    margin-top: 2%;
+    margin-left: 3%;
+    width: 50%;
+}
+.comentarios{
+    position: relative;
 }
 @media only screen and (min-width: 768px) {
     /* For desktop: */
@@ -82,5 +98,9 @@ body{
     .trailer iframe{
         width: 45vw;
         height: 22vw;
+    }
+    .imgUser{
+        width: 2.5%;
+        height: 2.5vw;
     }
 }

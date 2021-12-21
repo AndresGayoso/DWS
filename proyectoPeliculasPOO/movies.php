@@ -2,6 +2,12 @@
 error_reporting(0);
 include ("map.php");
 include ("sort.php");
+session_start();
+
+if(isset($_GET["logout"])){
+    session_unset();
+    session_destroy();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -175,12 +181,21 @@ include ("sort.php");
             ?>
             <button id="submit" type="submit">Filtrar</button>
         </form>
-        <a href="signup.php">
-            <button id="users" class="posSignup">Sign Up</button>
+        <?php
+        if($_SESSION["Login"] == true){
+  echo('<a href="?logout=true">
+            <button id="logout" class="position">Logout</button>
+        </a>
+        <p id="default" class="userPos">Bienvenido, '.$_SESSION["user"].'</p>');
+        }else{
+  echo('<a href="signup.php">
+            <button id="signup" class="position">Sign Up</button>
         </a>
         <a href="login.php">
-            <button id="users" class="posLogin">Log In</button>
-        </a>
+            <button id="login" class="position">Log In</button>
+        </a>');
+        }
+        ?>
     </nav>
     <div style="margin-top: 3%;" class="card-group">
        <?php

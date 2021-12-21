@@ -221,6 +221,7 @@ function InsertUsuarios($user, $password)
 }
 function searchUsuarios($user, $password)
 {
+    session_start();
     global $conn;
 
     $sql = "Select usuario,contraseña from Usuarios where usuario like '".$user."'";
@@ -231,6 +232,8 @@ function searchUsuarios($user, $password)
 
     if ($user == $usuario[0]["usuario"]){
         if ($comprobar == true){
+            $_SESSION["Login"] = true;
+            $_SESSION["user"] = $user;
             return header("Location: movies.php");
         }else{
             echo "<script>
@@ -242,7 +245,4 @@ function searchUsuarios($user, $password)
            window.alert('El usuario o la contraseña no son correctas');
          </script>";
     }
-
-
-
 }

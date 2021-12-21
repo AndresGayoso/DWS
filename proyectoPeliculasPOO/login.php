@@ -39,6 +39,7 @@ if (isset($user)) {
         echo '<p class="p1">*No debes dejar la celda vacia</p>';
     }
 }
+
 $password = $_POST["contraseña"];
 if (isset($password)) {
     if($password != ""){

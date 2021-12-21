@@ -10,6 +10,7 @@ for ($i = 0; $i < count($arrayOBJComplete); $i++) {
         break;
     }
 }
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,6 +59,22 @@ for ($i = 0; $i < count($arrayOBJComplete); $i++) {
     <iframe src="<?php echo $pelicula->getTrailer()?>" title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
+</div>
+<h2>Comentarios</h2>
+<div class="comentarios">
+    <img class="imgUser" src="http://assets.stickpng.com/thumbs/585e4bf3cb11b227491c339a.png">
+    <h3 class="user">Andres</h3>
+    <p class="comentario">Esta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfecta</p>
+</div>
+<div class="comentarios">
+    <img class="imgUser" src="http://assets.stickpng.com/thumbs/585e4bf3cb11b227491c339a.png">
+    <h3 class="user">Andres</h3>
+    <p class="comentario">Esta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfecta</p>
+</div>
+<div class="comentarios">
+    <img class="imgUser" src="http://assets.stickpng.com/thumbs/585e4bf3cb11b227491c339a.png">
+    <h3 class="user">Andres</h3>
+    <p class="comentario">Esta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfecta</p>
 </div>
 </body>
 
