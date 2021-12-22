@@ -11,7 +11,7 @@
 
 <body>
     <form action="signup.php" method="post" autocomplete="off">
-        <input class="input posicion1" name="usuario" placeholder="Nombre Usuario" type="text">
+        <input class="input posicion1" name="usuario" placeholder="Nombre Usuario" type="text" maxlength="25">
         <span class="underline pos1"></span>
         <input class="input posicion2" name="contraseña" placeholder="Contraseña" type="text">
         <span class="underline pos2"></span>
@@ -32,11 +32,7 @@
         $user = $_POST["usuario"];
         if(isset($user)){
             if ($user != ""){
-                if (strlen($user) < 25){
-                    $validuser = $user;
-                }else{
-                    echo '<p class="p1">*Debe tener como maximo 25 caracteres</p>';
-                }
+                $validuser = $user;
             }else{
                 echo '<p class="p1">*No debes dejar la celda vacia</p>';
             }

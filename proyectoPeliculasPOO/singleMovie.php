@@ -6,6 +6,8 @@ $id = $_GET["id"];
 
 for ($i = 0; $i < count($arrayOBJComplete); $i++) {
     if ($arrayOBJComplete[$i]->getId() == $id) {
+        insertTrailer($arrayOBJComplete[$i]);
+        insertComentario($arrayOBJComplete[$i]);
         $pelicula = $arrayOBJComplete[$i];
         break;
     }
@@ -61,26 +63,46 @@ session_start();
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
 </div>
-<h2>Comentarios</h2>
+<h2 class="comentariosh2">Comentarios</h2>
 <?php
     if ($_SESSION["Login"] == true){
-
+        echo('<form action="#" method="POST">
+                <div class="comentPost">
+                    <i class="fas fa-user-circle fa-3x imgUser"></i>
+                    <h3>'.$_SESSION["user"].'</h3>
+                </div>
+                <textarea placeholder="Añade un nuevo comentario" name="textarea" rows="10" cols="100" maxlength="1000"></textarea>
+                <input type="submit" class="submit" name="submit" value="Publicar">
+              </form>');
+    }else{
+        echo('<form action="#" method="POST">
+                <textarea placeholder="Deber estar registrado para añadir comentarios" name="textarea" rows="10" cols="100" maxlength="1000" readonly></textarea>
+                <input type="submit" class="submit" name="submit" value="Publicar" disabled>
+              </form>');
     }
+    for ($i = 0; $i < count($pelicula->getComentarios()); $i++) {
+        echo('<div class="comentario">
+                <div class="user">
+                    <i class="fas fa-user-circle fa-3x imgUser"></i>
+                    <h3>' . $pelicula->getComentarios()[$i]->getNomUser() . '</h3>
+                </div>
+                    <p class="textoComentario">' . $pelicula->getComentarios()[$i]->getComentario() . '</p>
+                </div>');
+    }
+
+    $comentario = $_POST["textarea"];
+
+    if(isset($comentario)){
+        if($comentario != ""){
+            insertarComentarios($_SESSION["userId"],$pelicula->getId(),$_POST["textarea"]);
+        }else{
+            echo "<script>
+                           window.alert('Debes escribir algun comentario');
+                      </script>";
+        }
+    }
+
 ?>
-<div class="comentario">
-    <div class="user"><i class="fas fa-user-circle fa-3x imgUser"></i>
-        <h3>Andres</h3></div>
-    <p class="textoComentario">Esta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula
-        me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula
-        me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula
-        me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula
-        me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula
-        me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula
-        me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula
-        me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula
-        me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula me ha parecido perfectaEsta pelicula
-        me ha parecido perfectaE</p>
-</div>
 </body>
 
 </html>

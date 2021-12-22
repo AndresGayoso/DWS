@@ -17,6 +17,7 @@ class Pelicula
         $this->trailer = "";
         $this->Actores = [];
         $this->Categorias = [];
+        $this->Comentarios = [];
     }
 
     public function getId()
@@ -99,7 +100,14 @@ class Pelicula
         $this->trailer = $trailer;
     }
 
+    public function getComentarios(): array
+    {
+        return $this->Comentarios;
+    }
 
-
+    public function setComentarios(array $Comentarios): void
+    {
+        $this->Comentarios = $Comentarios;
+    }
 
 }

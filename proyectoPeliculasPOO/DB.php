@@ -1,6 +1,7 @@
 <?php
 
-include("Pelicula.php");
+include("clases/Pelicula.php");
+include("clases/Comentarios.php");
 
 //Conectarse a la base de datos
 $servername = "sql480.main-hosting.eu";
@@ -139,6 +140,7 @@ function NomDirector($id)
     return $NomDirector;
 }
 
+//Extraemos el array con la url de la pelicula envidad "id"
 function trailerMultimedia($id)
 {
     global $conn;
@@ -155,6 +157,27 @@ function trailerMultimedia($id)
     return $urlTrailer;
 }
 
+function ComentariosPeliculas($id)
+{
+    global $conn;
+
+    $sql = "select c.id,u.usuario,c.comentario from Comentarios c
+                inner join Usuarios u on u.id = c.user_id
+                where c.pel_id = ".$id.";";
+
+    $resultado = $conn->query($sql);
+    $comentarios = $resultado->fetch_all(MYSQLI_ASSOC);
+
+    if($comentarios[0]["id"] != null){
+        for ($i = 0; $i < count($comentarios);$i++){
+            $arrayComentarios[] = new Comentarios ($comentarios[$i]["id"],$comentarios[$i]["usuario"],$comentarios[$i]["comentario"]);
+        }
+    }else{
+        $arrayComentarios = [];
+    }
+
+    return $arrayComentarios;
+}
 
 //Variables para llamar a las funciones de los objetos
 $arrayPelOBJ = createObjectPelicula($Peliculas_array);
@@ -183,9 +206,15 @@ function insertDirector(Pelicula $pelicula)
     $pelicula->setDirector(NomDirector($pelicula->getId()));
 }
 
+//Insertar el string con la url del trailer de la pelicula en la pelicula envidad "pelicula"
 function insertTrailer(Pelicula $pelicula)
 {
     $pelicula->setTrailer(trailerMultimedia($pelicula->getId()));
+}
+
+function insertComentario(Pelicula $pelicula)
+{
+    $pelicula->setComentarios(ComentariosPeliculas($pelicula->getId()));
 }
 
 //Funcion para rellenar todos los objetos con sus actores, categorias, la portada y director
@@ -196,7 +225,6 @@ function InsertCatActMultDir($arrayPelOBJ)
         insertActores($arrayPelOBJ[$i]);
         insertMultimedia($arrayPelOBJ[$i]);
         insertDirector($arrayPelOBJ[$i]);
-        insertTrailer($arrayPelOBJ[$i]);
     }
 
     return $arrayPelOBJ;
@@ -258,6 +286,12 @@ function insertarComentarios($userID,$pelID,$comentario){
 
     $sql = 'insert into Comentarios (user_id,pel_id,comentario) values ("'.$userID.'","'.$pelID.'","'.$coment.'")';
 
-    $conn->query($sql);
+    if($conn->query($sql) == true){
+        header('Location:singleMovie.php?id='.$pelID);
+    }else{
+        echo "<script>
+           window.alert('Error al insertar el comentario');
+         </script>";
+    }
 
 }
