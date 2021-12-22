@@ -25,11 +25,13 @@ body{
 .actor h3{
     color: white;
 }
+.actor img{
+    margin-right: 50px;
+}
 .imagenes{
-    display: inline-block;
+    display: flex;
     position: absolute;
     left: 32%;
-    display: flex;
     margin-top: -18%;
 }
 .h2{
@@ -54,21 +56,25 @@ body{
     height: 35px;
     cursor: pointer;
 }
-.imgUser{
-    display: inline-block;
-    margin-left: 3%;
+.user{
+    text-transform: capitalize;
+    color: white;
+}
+.user i{
+    margin-right: 2%;
+    color: black;
 }
 .user{
-    display: inline-block;
+    display: flex;
+}
+.textoComentario{
+    margin-top: 1%;
+    width: 100%;
 }
 .comentario{
-    position: relative;
-    margin-top: 2%;
     margin-left: 3%;
+    margin-bottom: 2%;
     width: 50%;
-}
-.comentarios{
-    position: relative;
 }
 @media only screen and (min-width: 768px) {
     /* For desktop: */
@@ -98,9 +104,5 @@ body{
     .trailer iframe{
         width: 45vw;
         height: 22vw;
-    }
-    .imgUser{
-        width: 2.5%;
-        height: 2.5vw;
     }
 }

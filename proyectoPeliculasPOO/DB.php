@@ -210,6 +210,8 @@ function InsertUsuarios($user, $password)
 {
     global $conn;
 
+    $user = $conn->escape_string($user);
+
     $sql = "Insert into Usuarios (usuario,contraseña) values ('" . $user . "','" . $password . "')";
     if ($conn->query($sql) == true) {
         return header("Location: movies.php");
@@ -224,7 +226,7 @@ function searchUsuarios($user, $password)
     session_start();
     global $conn;
 
-    $sql = "Select usuario,contraseña from Usuarios where usuario like '".$user."'";
+    $sql = "Select id,usuario,contraseña from Usuarios where usuario like '".$user."'";
     $resultado = $conn->query($sql);
     $usuario = $resultado->fetch_all(MYSQLI_ASSOC);
 
@@ -234,6 +236,7 @@ function searchUsuarios($user, $password)
         if ($comprobar == true){
             $_SESSION["Login"] = true;
             $_SESSION["user"] = $user;
+            $_SESSION["userId"] = $usuario[0]["id"];
             return header("Location: movies.php");
         }else{
             echo "<script>
@@ -245,4 +248,16 @@ function searchUsuarios($user, $password)
            window.alert('El usuario o la contraseña no son correctas');
          </script>";
     }
+}
+
+function insertarComentarios($userID,$pelID,$comentario){
+
+    global $conn;
+
+    $coment = $conn->escape_string($comentario);
+
+    $sql = 'insert into Comentarios (user_id,pel_id,comentario) values ("'.$userID.'","'.$pelID.'","'.$coment.'")';
+
+    $conn->query($sql);
+
 }
