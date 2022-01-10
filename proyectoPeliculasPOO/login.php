@@ -13,7 +13,7 @@
 <form action="login.php" method="post" autocomplete="off">
     <input class="input posicion1" name="usuario" placeholder="Nombre Usuario" type="text">
     <span class="underline pos1"></span>
-    <input class="input posicion2" name="contraseña" placeholder="Contraseña" type="text">
+    <input class="input posicion2" name="contraseña" placeholder="Contraseña" type="password">
     <span class="underline pos2"></span>
     <input class="login" type="submit" name="submit" value="Iniciar Sesion">
 </form>
