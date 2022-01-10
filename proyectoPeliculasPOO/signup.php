@@ -13,9 +13,9 @@
     <form action="signup.php" method="post" autocomplete="off">
         <input class="input posicion1" name="usuario" placeholder="Nombre Usuario" type="text" maxlength="25">
         <span class="underline pos1"></span>
-        <input class="input posicion2" name="contraseña" placeholder="Contraseña" type="text">
+        <input class="input posicion2" name="contraseña" placeholder="Contraseña" type="password">
         <span class="underline pos2"></span>
-        <input class="input posicion3" name="confirmar" placeholder="Confirmar Contraseña" type="text">
+        <input class="input posicion3" name="confirmar" placeholder="Confirmar Contraseña" type="password">
         <span class="underline pos3"></span>
         <input class="submit" type="submit" name="submit" value="Registrarse">
     </form>
