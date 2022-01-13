@@ -9,7 +9,10 @@ ubicacion (ciudad)
 calle (nombre de la calle)
 latitud (latitud hotel mapa)
 longitud (longitud hotel mapa)
+hora_entrada (hora a la que cierra)
+hora_salida (hora a la que abre)
 calificacion (nota del hotel)
+telefono (contacto del hotel)
 descripcion (descripion de la zona y de la habitacion)
 
 -------------------------------------------------------
