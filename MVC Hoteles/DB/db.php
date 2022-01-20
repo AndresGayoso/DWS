@@ -24,10 +24,7 @@ class db extends mysqli{
 
         if (mysqli_connect_error()) {
             die("ERROR DATABASE: " . mysqli_connect_error());
-        }else{
-            echo "hola";
         }
     }
-
 
 }

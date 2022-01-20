@@ -19,29 +19,29 @@ class Hotel
     /**
      * @param $id
      * @param $nombre
-     * @param $estrellas
      * @param $ubicacion
      * @param $calle
+     * @param $estrellas
      * @param $latitud
      * @param $longitud
+     * @param $calificacion
      * @param $hora_entrada
      * @param $hora_salida
-     * @param $calificacion
      * @param $telefono
      * @param $descricpcion
      */
-    public function __construct($id, $nombre, $estrellas, $ubicacion, $calle, $latitud, $longitud, $hora_entrada, $hora_salida, $calificacion, $telefono, $descricpcion)
+    public function __construct($id, $nombre, $ubicacion, $calle, $estrellas, $latitud, $longitud, $calificacion, $hora_entrada, $hora_salida, $telefono, $descricpcion)
     {
         $this->id = $id;
         $this->nombre = $nombre;
-        $this->estrellas = $estrellas;
         $this->ubicacion = $ubicacion;
         $this->calle = $calle;
+        $this->estrellas = $estrellas;
         $this->latitud = $latitud;
         $this->longitud = $longitud;
+        $this->calificacion = $calificacion;
         $this->hora_entrada = $hora_entrada;
         $this->hora_salida = $hora_salida;
-        $this->calificacion = $calificacion;
         $this->telefono = $telefono;
         $this->descricpcion = $descricpcion;
     }
