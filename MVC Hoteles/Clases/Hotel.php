@@ -14,7 +14,7 @@ class Hotel
     private float $calificacion;
     private string $telefono;
     private string $descricpcion;
-    private $imagenes = [];
+    private array $imagenes;
 
     /**
      * @param $id
@@ -30,7 +30,7 @@ class Hotel
      * @param $telefono
      * @param $descricpcion
      */
-    public function __construct($id, $nombre, $ubicacion, $calle, $estrellas, $latitud, $longitud, $calificacion, $hora_entrada, $hora_salida, $telefono, $descricpcion)
+    public function __construct($id, $nombre, $ubicacion, $calle, $estrellas, $latitud, $longitud, $calificacion, $hora_entrada, $hora_salida, $telefono, $descricpcion,$imagenes)
     {
         $this->id = $id;
         $this->nombre = $nombre;
@@ -44,6 +44,7 @@ class Hotel
         $this->hora_salida = $hora_salida;
         $this->telefono = $telefono;
         $this->descricpcion = $descricpcion;
+        $this->imagenes = $imagenes;
     }
 
     /**
@@ -148,14 +149,6 @@ class Hotel
     public function getImagenes(): array
     {
         return $this->imagenes;
-    }
-
-    /**
-     * @param array $imagenes
-     */
-    public function setImagenes(array $imagenes): void
-    {
-        $this->imagenes = $imagenes;
     }
 
 
