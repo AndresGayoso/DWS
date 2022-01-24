@@ -17,16 +17,26 @@
     <script src="https://kit.fontawesome.com/58a9273ff1.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../Estilos/EstiloListaHotel.css">
 </head>
-
 <body>
-<div class="container">
-    <div class="text-center">
-        <div class="text-white">
-            <h1 class="display-3 text-uppercase">hoteles españa</h1>
-        </div>
+<nav class="navbar navbar-expand-md navbar-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-nav">
+        <a style="color: white; text-decoration: none" class="nav-item display-3 text-uppercase nav-link" href="#">Hoteles España</a>
     </div>
-</div>
-<div class="mt-5 ml-5 cuerpo">
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto mr-3">
+            <li class="nav-item">
+                <a style="color:white" class="btn btn-primary nav-link mr-2" href="#">LogIn</a>
+            </li>
+            <li class="nav-item">
+                <a style="color:white" class="btn btn-primary nav-link" href="#">SignIn</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="ml-5 cuerpo">
     <div class="container-fluid">
         <div class="row">
             <div class=" mr-n3 col-lg-6 col-md-6 col-sm-12 col-12">
@@ -45,7 +55,7 @@
                                 echo '<i class="fas fa-star"></i>';
                             }
                             ?>
-                            <h5 class="mt-3 mb-3"><?php echo $hotel->getUbicacion() ?>></h5>
+                            <h5 class="mt-3 mb-3"><?php echo $hotel->getUbicacion() ?></h5>
                             <p class="mb-0 float-left"><?php echo $hotel->getCalle() ?>
                             <div class="nota align-middle mt-n3 mb-0 rounded text-center float-right mr-3
                             <?php
