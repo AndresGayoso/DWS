@@ -19,22 +19,37 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-    </button>
     <div class="navbar-nav">
         <a style="color: white; text-decoration: none" class="nav-item display-3 text-uppercase nav-link" href="#">Hoteles España</a>
     </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto mr-5">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle btn btn-primary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                    Hola
+                </a>
+                <div class=" dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Log Out</a>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <!--
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto mr-3">
             <li class="nav-item">
-                <a style="color:white" class="btn btn-primary nav-link mr-2" href="#">LogIn</a>
+                <a style="color:white" class="btn btn-primary nav-link mr-2" href="../Controlador/LogInControlador.php">LogIn</a>
             </li>
             <li class="nav-item">
-                <a style="color:white" class="btn btn-primary nav-link" href="#">SignIn</a>
+                <a style="color:white" class="btn btn-primary nav-link" href="../Controlador/SignUpControlador.php">SignIn</a>
             </li>
         </ul>
     </div>
+    -->
 </nav>
 <div class="ml-5 cuerpo">
     <div class="container-fluid">
@@ -57,17 +72,17 @@
                             ?>
                             <h5 class="mt-3 mb-3"><?php echo $hotel->getUbicacion() ?></h5>
                             <p class="mb-0 float-left"><?php echo $hotel->getCalle() ?>
-                            <div class="nota align-middle mt-n3 mb-0 rounded text-center float-right mr-3
+                            <div class="h6 text-dark align-middle mt-n3 mb-0 rounded text-center float-right mr-3 alert
                             <?php
                             $nota = $hotel->getCalificacion();
                             if($nota >= 9){
-                                echo "bg-success";
+                                echo "alert-success";
                             }elseif ($nota < 9 && $nota >= 8){
-                                echo "bg-primary";
+                                echo "alert-primary";
                             }elseif ($nota < 8 && $nota >= 7){
-                                echo "bg-warning";
+                                echo "alert-warning";
                             }elseif ($nota < 7){
-                                echo "bg-danger";
+                                echo "alert-danger";
                             }
                             ?>
                             "><?php echo $hotel->getCalificacion() ?></div>

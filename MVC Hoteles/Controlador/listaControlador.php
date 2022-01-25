@@ -2,6 +2,8 @@
 
 include_once ("../Modelo/listaModelo.php");
 
+session_start();
+
 $model = new listaModelo();
 $hoteles = $model->getHoteles();
 
@@ -18,4 +20,4 @@ if (isset($_GET["HotelId"])) {
     $zoom = 15;
 }
 
-require_once ("../Vista/listaHoteles.php");
+include_once ("../Vista/listaHoteles.php");
