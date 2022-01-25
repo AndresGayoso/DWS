@@ -1,6 +1,7 @@
 <?php
 
 include_once "../DB/db.php";
+include_once "../Clases/Usuario.php";
 
 class LogIn
 {
@@ -11,30 +12,17 @@ class LogIn
         $this->db = new db();
     }
 
-    public function CheckUser($user, $email, $password)
+    public function CheckUser($texto, $password)
     {
-
-        $sql = 'select * from MVC_Usuarios where usuario = "' . $user . '" or email = "' . $email . '"';
+        $sql = 'select * from MVC_Usuarios where usuario = "' . $texto . '" or email = "' . $texto . '"';
         $this->db->conexion();
         $query = $this->db->query($sql);
         $this->db->close();
         if ($result = $query->fetch_assoc()) {
             if(password_verify($password,$result["password"])){
-                return true;
-            }else{
-                echo("
-                <script>
-                    window.alert('El usuario/email o contraseña no son correctas');
-                </script>
-                ");
+                return new Usuario($result["id"],$result["usuario"],$result["email"]);
             }
-        } else {
-            echo("
-            <script>
-                window.alert('El usuario/email o contraseña no son correctas');
-            </script>
-            ");
         }
-
+        return false;
     }
 }

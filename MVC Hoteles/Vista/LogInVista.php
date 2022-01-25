@@ -35,14 +35,14 @@
             <div class="form-row justify-content-center">
                 <div class="form-group col-lg-10">
                     <label for="inputName">Usuario / Email</label>
-                    <input type="text" name="txtUser" class="form-control" placeholder="Puedes introducir email o usuario">
+                    <input type="text" name="txtUser" class="form-control" placeholder="Puedes introducir email o usuario" required>
                 </div>
                 <div class="form-group col-lg-10">
                     <label for="inputName">Contraseña:</label>
-                    <input type="password" name="password" class="form-control" placeholder="Password">
+                    <input type="password" name="password" class="form-control" placeholder="Password" required>
                 </div>
                 <div class="form-group col-lg-3">
-                    <a href="../Controlador" class="btn btn-primary">Register</a>
+                    <a href="../Controlador/SignUpControlador.php" class="btn btn-primary">Register</a>
                 </div>
                 <div class="form-group col-lg-7 ml-n4">
                     <p>Si todavia no estas registrado puede hacer click en el boton

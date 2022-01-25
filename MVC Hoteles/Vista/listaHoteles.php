@@ -25,20 +25,21 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
     </button>
+    <?php if(isset($_SESSION["LogIn"])) {?>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto mr-5">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle btn btn-primary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                    Hola
+                <a style="color: white" class="text-capitalize nav-link dropdown-toggle btn btn-primary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                    <?php echo $_SESSION["user"]?>
                 </a>
-                <div class=" dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Log Out</a>
+                <div class=" dropdown-menu dropdown-menu-right bg-primary" aria-labelledby="navbarDropdown">
+                    <a style="color: white" class="bg-transparent dropdown-item" href="../Controlador/LogOutControlador.php">Log Out</a>
                 </div>
             </li>
 
         </ul>
     </div>
-    <!--
+    <?php } else { ?>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto mr-3">
             <li class="nav-item">
@@ -49,7 +50,7 @@
             </li>
         </ul>
     </div>
-    -->
+    <?php } ?>
 </nav>
 <div class="ml-5 cuerpo">
     <div class="container-fluid">
