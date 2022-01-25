@@ -4,14 +4,14 @@ class Hotel
 {
     private int $id;
     private string $nombre;
-    private int $estrellas;
     private string $ubicacion;
     private string $calle;
+    private int $estrellas;
     private float $latitud;
     private float $longitud;
+    private float $calificacion;
     private string $hora_entrada;
     private string $hora_salida;
-    private float $calificacion;
     private string $telefono;
     private string $descricpcion;
     private array $imagenes;
