@@ -5,9 +5,9 @@ include_once "../Modelo/singleHotelModelo.php";
 
 $Hotel = new singleHotel();
 
-/*$HotelId = $_GET["HotelId"];*/
+$HotelId = $_GET["HotelId"];
 
-$singleHotel = $Hotel->getHotel(1);
+$singleHotel = $Hotel->getHotel($HotelId);
 
 include_once "../Vista/singleHotelVista.php";
 
