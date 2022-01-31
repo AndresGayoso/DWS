@@ -68,7 +68,7 @@
                 <?php /*Bucle habitaciones*/ ?>
                 <div class="mr-1 mb-3 border border-primary media">
                     <img style="height: 130px" class="w-25 mr-3"
-                         src="https://source.unsplash.com/Pn6iimgM-wo/1600x900/" alt="">
+                         src="<?php /*src habitacion imagen*/ ?>" alt="Imagen habitacion">
                     <div class="media-body">
                         <h3 class="font-weight-bold mt-2"><?php /*Nombre habitacion*/ ?></h3>
                         <h5 class="mt-2"><?php /*Numero personas habitacion*/ ?></h5>
