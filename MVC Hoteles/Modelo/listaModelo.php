@@ -15,13 +15,13 @@ class listaModelo
 
     public function getImagenesHotel($hotelID){
 
-        $sql = 'SELECT * from MVC_Multimedia where type like "hotel" and id_hotel = "'.$hotelID.'";';
+        $sql = 'SELECT * from MVC_Multimedia where type like "hotel" and id_fk = "'.$hotelID.'";';
         $this->db->conexion();
         $query = $this->db->query($sql);
         $this->db->close();
         $resultado = array();
         while($row = $query->fetch_assoc()){
-            $resultado[]= new Images($row["id"],$row["id_hotel"],$row["url"]);
+            $resultado[]= new Images($row["id"],$row["id_fk"],$row["url"]);
         }
         return $resultado;
     }

@@ -13,8 +13,9 @@ class Hotel
     private string $hora_entrada;
     private string $hora_salida;
     private string $telefono;
-    private string $descricpcion;
+    private string $descripcion;
     private array $imagenes;
+    private array $habitaciones;
 
     /**
      * @param $id
@@ -28,9 +29,9 @@ class Hotel
      * @param $hora_entrada
      * @param $hora_salida
      * @param $telefono
-     * @param $descricpcion
+     * @param $descripcion
      */
-    public function __construct($id, $nombre, $ubicacion, $calle, $estrellas, $latitud, $longitud, $calificacion, $hora_entrada, $hora_salida, $telefono, $descricpcion,$imagenes)
+    public function __construct($id, $nombre, $ubicacion, $calle, $estrellas, $latitud, $longitud, $calificacion, $hora_entrada, $hora_salida, $telefono, $descripcion,$imagenes)
     {
         $this->id = $id;
         $this->nombre = $nombre;
@@ -43,7 +44,7 @@ class Hotel
         $this->hora_entrada = $hora_entrada;
         $this->hora_salida = $hora_salida;
         $this->telefono = $telefono;
-        $this->descricpcion = $descricpcion;
+        $this->descripcion = $descripcion;
         $this->imagenes = $imagenes;
     }
 
@@ -138,9 +139,9 @@ class Hotel
     /**
      * @return string
      */
-    public function getDescricpcion(): string
+    public function getDescripcion(): string
     {
-        return $this->descricpcion;
+        return $this->descripcion;
     }
 
     /**
@@ -149,6 +150,22 @@ class Hotel
     public function getImagenes(): array
     {
         return $this->imagenes;
+    }
+
+    /**
+     * @return array
+     */
+    public function getHabitaciones(): array
+    {
+        return $this->habitaciones;
+    }
+
+    /**
+     * @param array $habitaciones
+     */
+    public function setHabitaciones(array $habitaciones): void
+    {
+        $this->habitaciones = $habitaciones;
     }
 
 

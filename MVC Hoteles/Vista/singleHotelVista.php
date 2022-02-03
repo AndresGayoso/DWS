@@ -59,26 +59,27 @@
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-12 padding-0">
                 <h4 class="font-weight-bold"><i id="info" class="mr-2 fas fa-info-circle"></i>Informacion</h4>
-                <h5 class="ml-5 text-justify"> <?php echo $singleHotel->getDescricpcion() ?>
+                <h5 class="ml-5 text-justify"> <?php echo $singleHotel->getDescripcion() ?>
                 </h5>
             </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-sm-12">
-            <div style="height: 500px;" class=" pl-5 w-75 habitaciones overflow-auto">
-                <?php /*Bucle habitaciones*/ ?>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-sm-12 pl-5">
+            <h4 class="font-weight-bold"><i id="habitacion" class="mr-2 fas fa-bed"></i>Habitaciones</h4>
+            <div style="height: 500px;" class=" w-75 habitaciones overflow-auto">
+                <?php foreach ($singleHotel->getHabitaciones() as $habitacion) {?>
                 <div class="mr-1 mb-3 border border-primary media">
                     <img style="height: 130px" class="w-25 mr-3"
-                         src="<?php /*src habitacion imagen*/ ?>" alt="Imagen habitacion">
+                         src="<?php echo $habitacion->getImagenes()[0]->getUrl() ?>" alt="Imagen habitacion">
                     <div class="media-body">
-                        <h3 class="font-weight-bold mt-2"><?php /*Nombre habitacion*/ ?></h3>
-                        <h5 class="mt-2"><?php /*Numero personas habitacion*/ ?></h5>
+                        <h3 class="font-weight-bold mt-2"><?php echo $habitacion->getNombre() ?></h3>
+                        <h5 class="mt-2"><?php echo $habitacion->getPersonas() ?> personas</h5>
                         <h5 class="mt-2 float-left">Precio:</h5>
                         <h5 style="max-width: min-content;"
-                            class=" ml-2 float-left font-weight-bold alert-primary p-2 rounded"><?php /*precio*/ ?></h5>
+                            class=" ml-2 float-left font-weight-bold alert-primary p-2 rounded"><?php echo $habitacion->getPrecio()."€"?></h5>
                         <a class="mr-2 btn btn-primary float-right" href="#" role="button">Reservar</a>
                     </div>
                 </div>
-                <?php /*Cerrar Bucle habitaciones*/ ?>
+                <?php } ?>
             </div>
         </div>
     </div>
