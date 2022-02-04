@@ -11,6 +11,7 @@ if(isset($texto) && isset($password)){
     if ($usuario){
         session_start();
         $_SESSION["LogIn"] = true;
+        $_SESSION["userId"] = $usuario->getId();
         $_SESSION["user"] = $usuario->getUsuario();
         header("Location: ../Controlador/listaControlador.php");
     }else{

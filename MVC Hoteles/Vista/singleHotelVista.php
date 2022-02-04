@@ -76,7 +76,7 @@
                         <h5 class="mt-2 float-left">Precio:</h5>
                         <h5 style="max-width: min-content;"
                             class=" ml-2 float-left font-weight-bold alert-primary p-2 rounded"><?php echo $habitacion->getPrecio()."€"?></h5>
-                        <a class="mr-2 btn btn-primary float-right" href="#" role="button">Reservar</a>
+                        <a class="mr-2 btn btn-primary float-right" href="../Controlador/reservaControlador.php?HotelId=<?php echo $HotelId ?>&amp;HabitacionId=<?php echo $habitacion->getId() ?>" role="button">Reservar</a>
                     </div>
                 </div>
                 <?php } ?>
