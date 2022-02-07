@@ -6,16 +6,9 @@ $reserva = new reservaModelo();
 
 session_start();
 
-$HotelId = $_GET["HotelId"];
-$HabitacionId = $_GET["HabitacionId"];
-$email = $_POST["email"];
-$entrada = $_POST["entrada"];
-$salida = $_POST["salida"];
-$usuario = $_SESSION["userId"];
-
-if(isset($email) && isset($entrada) && isset($salida)){
-    if($reserva->ComprobarReserva($entrada, $salida, $HabitacionId) == false){
-        $reserva->InsertarReserva($usuario,$HabitacionId,$entrada,$salida);
+if(isset($_POST["email"]) && isset($_POST["entrada"]) && isset($_POST["salida"])){
+    if($reserva->ComprobarReserva($_POST["entrada"], $_POST["salida"], $_GET["HabitacionId"]) == false){
+        $reserva->InsertarReserva($_SESSION["userId"],$_GET["HabitacionId"],$_POST["entrada"],$_POST["salida"]);
         echo ("
         <script>
             window.alert('Su resereva se realizo correctamente');

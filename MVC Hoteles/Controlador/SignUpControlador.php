@@ -4,18 +4,12 @@ include_once "../Modelo/SignUpModelo.php";
 
 $sigin = new SignUp();
 
-$user = $_POST["usuario"];
-$email = $_POST["email"];
-$passwd1 = $_POST["contra1"];
-$passwd2 = $_POST["contra2"];
-
-
-if (isset($user) && isset($email) && isset($passwd1) && isset($passwd2)) {
-    if (strlen($user) < 25) {
-        if (strlen($email) < 50) {
-            if($passwd1 == $passwd2){
-                $passwdHash = password_hash($passwd1,PASSWORD_DEFAULT);
-                if($sigin->insertUser($user,$email,$passwdHash)){
+if (isset($_POST["usuario"]) && isset($_POST["email"]) && isset($_POST["contra1"]) && isset($_POST["contra2"])) {
+    if (strlen($_POST["usuario"]) < 25) {
+        if (strlen($_POST["email"]) < 50) {
+            if($_POST["contra1"] == $_POST["contra2"]){
+                $passwdHash = password_hash($_POST["contra1"],PASSWORD_DEFAULT);
+                if($sigin->insertUser($_POST["usuario"],$_POST["email"],$passwdHash)){
                     header("Location: ../Controlador/LogInControlador.php");
                 }else{
                     echo ("

@@ -1,13 +1,10 @@
 <?php
-error_reporting(0);
+
 include_once "../Modelo/LogInModelo.php";
 
-$texto = $_POST["txtUser"];
-$password = $_POST["password"];
-
-if(isset($texto) && isset($password)){
+if(isset($_POST["txtUser"]) && isset($_POST["password"])){
     $login = new LogIn();
-    $usuario = $login->CheckUser($texto,$password);
+    $usuario = $login->CheckUser($_POST["txtUser"],$_POST["password"]);
     if ($usuario){
         session_start();
         $_SESSION["LogIn"] = true;

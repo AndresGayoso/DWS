@@ -28,7 +28,7 @@
 </style>
 
 <body>
-<a class="btn btn-primary float-left ml-3" href="../Controlador/singleHotelControlador.php?HotelId=<?php echo $HotelId ?>" role="button">Volver</a>
+<a class="btn btn-primary float-left ml-3" href="../Controlador/singleHotelControlador.php?HotelId=<?php echo $_GET["HotelId"] ?>" role="button">Volver</a>
 <?php if($_SESSION["LogIn"] == true) {?>
 <div class="dropdown">
     <a class="mr-2 btn btn-primary dropdown-toggle float-right text-capitalize" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

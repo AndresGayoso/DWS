@@ -5,10 +5,8 @@ include_once "../Modelo/singleHotelModelo.php";
 
 $Hotel = new singleHotel();
 
-$HotelId = $_GET["HotelId"];
-
-$singleHotel = $Hotel->getHotel($HotelId);
-$singleHotel->setHabitaciones($Hotel->getHabitaciones($HotelId));
+$singleHotel = $Hotel->getHotel($_GET["HotelId"]);
+$singleHotel->setHabitaciones($Hotel->getHabitaciones($_GET["HotelId"]));
 
 include_once "../Vista/singleHotelVista.php";
 
