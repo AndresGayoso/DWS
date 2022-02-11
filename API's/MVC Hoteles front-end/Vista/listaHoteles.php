@@ -50,7 +50,7 @@
                        href="../Controlador/LogInControlador.php">LogIn</a>
                 </li>
                 <li class="nav-item">
-                    <a style="color:white" class="btn btn-primary nav-link" href="../Controlador/SignUpControlador.php">SignIn</a>
+                    <a style="color:white" class="btn btn-primary nav-link" href="../Controlador/SignUpControlador.php">SignUp</a>
                 </li>
             </ul>
         </div>

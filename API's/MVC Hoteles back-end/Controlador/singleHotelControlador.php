@@ -5,8 +5,15 @@ include_once "../Modelo/singleHotelModelo.php";
 
 $Hotel = new singleHotel();
 
-$singleHotel = $Hotel->getHotel($_GET["HotelId"]);
-$singleHotel->setHabitaciones($Hotel->getHabitaciones($_GET["HotelId"]));
+$return = array();
 
-include_once "../Vista/singleHotelVista.php";
+if (isset($_GET["HotelId"])){
+    $singleHotel = $Hotel->getHotel($_GET["HotelId"]);
+    $singleHotel->setHabitaciones($Hotel->getHabitaciones($_GET["HotelId"]));
+    $return["Hotel"] = $singleHotel;
+}else{
+    $return["error"] = "NO ID SELECTED";
+}
+
+echo json_encode($return);
 

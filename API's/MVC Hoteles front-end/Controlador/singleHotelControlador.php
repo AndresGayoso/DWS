@@ -1,12 +1,14 @@
 <?php
 
-include_once "../Modelo/singleHotelModelo.php";
+if(isset($_GET["HotelId"])){
+    $HotelSeleccionado = $_GET["HotelId"];
+    $file = file_get_contents("http://localhost/Actividades/API's/MVC%20Hoteles%20back-end/Controlador/singleHotelControlador.php?HotelId=".$HotelSeleccionado);
+    $hotel = json_decode($file)->Hotel;
+}else{
+    die("NO ID SELECTED");
+}
 
-
-$Hotel = new singleHotel();
-
-$singleHotel = $Hotel->getHotel($_GET["HotelId"]);
-$singleHotel->setHabitaciones($Hotel->getHabitaciones($_GET["HotelId"]));
+session_start();
 
 include_once "../Vista/singleHotelVista.php";
 

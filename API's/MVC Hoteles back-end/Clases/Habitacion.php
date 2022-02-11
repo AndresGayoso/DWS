@@ -2,11 +2,11 @@
 
 class Habitacion
 {
-    private int $id;
-    private string $nombre;
-    private int $personas;
-    private int $precio;
-    private array $imagenes;
+    public int $id;
+    public string $nombre;
+    public int $personas;
+    public int $precio;
+    public array $imagenes;
 
     /**
      * @param int $id

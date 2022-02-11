@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $singleHotel->getNombre() ?></title>
+    <title><?php echo $hotel->nombre ?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
           integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -25,7 +25,7 @@
         <div class="col-12">
             <!-- Hotel nombre-->
             <a href="../Controlador/listaControlador.php" class="mt-3 ml-2 float-left btn btn-primary" role="button">Volver</a>
-            <h1 class="text-center text-white font-weight-bold display-3"><?php echo $singleHotel->getNombre() ?></h1>
+            <h1 class="text-center text-white font-weight-bold display-3"><?php echo $hotel->nombre ?></h1>
         </div>
     </div>
 </div>
@@ -37,46 +37,46 @@
             <div class="col-lg-6 col-md-6 col-sm-12 col-12 padding-0">
                 <h4 class="font-weight-bold"><i id="location" class="mr-2 fas fa-map-marked"></i>Localizacion
                 </h4>
-                <h5 class="ml-5"><?php echo $singleHotel->getCalle() ?>
+                <h5 class="ml-5"><?php echo $hotel->calle ?>
                 </h5>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-12 padding-0">
                 <h4 class="font-weight-bold"><i id="rate" class="mr-2 fas fa-users"></i>Calificacion Usuario
                 </h4>
                 <h5 style="max-width: min-content;"
-                    class="font-weight-bold ml-5 alert-success alert"><?php echo $singleHotel->getCalificacion() ?></h5>
+                    class="font-weight-bold ml-5 alert-success alert"><?php echo $hotel->calificacion ?></h5>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-12 padding-0">
                 <h4 class="font-weight-bold"><i id="time" class="mr-2 far fa-clock"></i>Horario</h4>
                 <div class="ml-5">
-                    <h5>Entrada: <?php echo $singleHotel->getHoraEntrada() ?></h5>
-                    <h5>Salida: <?php echo $singleHotel->getHoraSalida() ?></h5>
+                    <h5>Entrada: <?php echo $hotel->hora_entrada ?></h5>
+                    <h5>Salida: <?php echo $hotel->hora_salida ?></h5>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-12 padding-0">
                 <h4 class="font-weight-bold"><i id="phone" class="mr-2 fas fa-phone-alt"></i>Telefono</h4>
-                <h5 class="ml-5"><?php echo $singleHotel->getTelefono() ?></h5>
+                <h5 class="ml-5"><?php echo $hotel->telefono ?></h5>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-12 padding-0">
                 <h4 class="font-weight-bold"><i id="info" class="mr-2 fas fa-info-circle"></i>Informacion</h4>
-                <h5 class="ml-5 text-justify"> <?php echo $singleHotel->getDescripcion() ?>
+                <h5 class="ml-5 text-justify"> <?php echo $hotel->descripcion ?>
                 </h5>
             </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-sm-12 pl-5">
             <h4 class="font-weight-bold"><i id="habitacion" class="mr-2 fas fa-bed"></i>Habitaciones</h4>
             <div style="height: 500px;" class=" w-75 habitaciones overflow-auto">
-                <?php foreach ($singleHotel->getHabitaciones() as $habitacion) {?>
+                <?php foreach ($hotel->habitaciones as $habitacion) {?>
                 <div class="mr-1 mb-3 border border-primary media">
                     <img style="height: 130px" class="w-25 mr-3"
-                         src="<?php echo $habitacion->getImagenes()[0]->getUrl() ?>" alt="Imagen habitacion">
+                         src="<?php echo $habitacion->imagenes[0]->url ?>" alt="Imagen habitacion">
                     <div class="media-body">
-                        <h3 class="font-weight-bold mt-2"><?php echo $habitacion->getNombre() ?></h3>
-                        <h5 class="mt-2"><?php echo $habitacion->getPersonas() ?> personas</h5>
+                        <h3 class="font-weight-bold mt-2"><?php echo $habitacion->nombre ?></h3>
+                        <h5 class="mt-2"><?php echo $habitacion->personas ?> personas</h5>
                         <h5 class="mt-2 float-left">Precio:</h5>
                         <h5 style="max-width: min-content;"
-                            class=" ml-2 float-left font-weight-bold alert-primary p-2 rounded"><?php echo $habitacion->getPrecio()."€"?></h5>
-                        <a class="mr-2 btn btn-primary float-right" href="../Controlador/reservaControlador.php?HotelId=<?php echo $HotelId ?>&amp;HabitacionId=<?php echo $habitacion->getId() ?>" role="button">Reservar</a>
+                            class=" ml-2 float-left font-weight-bold alert-primary p-2 rounded"><?php echo $habitacion->precio."€"?></h5>
+                        <a class="mr-2 btn btn-primary float-right" href="../Controlador/reservaControlador.php?HotelId=<?php echo $_GET["HotelId"] ?>&amp;HabitacionId=<?php echo $habitacion->id ?>" role="button">Reservar</a>
                     </div>
                 </div>
                 <?php } ?>
@@ -93,12 +93,12 @@
                 <div id="myCarousel" class="carousel slide w-100" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active" data-slide-number="0">
-                            <img src="<?php echo $singleHotel->getImagenes()[0]->getUrl() ?>" class="w-100 principal" alt="..."
+                            <img src="<?php echo $hotel->imagenes[0]->url ?>" class="w-100 principal" alt="..."
                                  data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
                         </div>
-                        <?php for ($i = 1; $i < count($singleHotel->getImagenes());$i++){ ?>
+                        <?php for ($i = 1; $i < count($hotel->imagenes);$i++){ ?>
                         <div class="carousel-item" data-slide-number="<?php echo $i ?>">
-                            <img src="<?php echo $singleHotel->getImagenes()[$i]->getUrl() ?>" class="w-100 principal" alt="..."
+                            <img src="<?php echo $hotel->imagenes[$i]->url ?>" class="w-100 principal" alt="..."
                                  data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
                         </div>
                         <?php } ?>
@@ -108,10 +108,10 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="row mx-0">
-                                <?php for($i = 0; $i < count($singleHotel->getImagenes());$i++) { ?>
+                                <?php for($i = 0; $i < count($hotel->imagenes);$i++) { ?>
                                 <div id="carousel-selector-<?php echo $i ?>" class="thumb col-4 col-sm-2 px-1 py-2 selected"
                                      data-target="#myCarousel" data-slide-to="<?php echo $i ?>">
-                                    <img src="<?php echo $singleHotel->getImagenes()[$i]->getUrl() ?>" class="img-fluid h-100 secundaria"
+                                    <img src="<?php echo $hotel->imagenes[$i]->url ?>" class="img-fluid h-100 secundaria"
                                          alt="...">
                                 </div>
                                 <?php } ?>
@@ -133,7 +133,7 @@
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex">
             <iframe class="w-75" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                    src="https://maps.google.com/maps?q=<?php echo $singleHotel->getLatitud() ?>,<?php echo $singleHotel->getLongitud() ?>&hl=es&z=15&output=embed"></iframe>
+                    src="https://maps.google.com/maps?q=<?php echo $hotel->latitud ?>,<?php echo $hotel->longitud ?>&hl=es&z=15&output=embed"></iframe>
         </div>
     </div>
 </div>

@@ -2,9 +2,9 @@
 
 class Usuario
 {
-     private int $id;
-     private string $usuario;
-     private string $email;
+     public int $id;
+     public string $usuario;
+     public string $email;
 
     /**
      * @param int $id
