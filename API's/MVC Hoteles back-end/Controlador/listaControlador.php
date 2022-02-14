@@ -25,6 +25,5 @@ if (isset($_GET["HotelId"])) {
         "zoom" => "15"
     );
 }
-echo "<pre>";
+
 echo json_encode($return);
-echo "<pre>";
