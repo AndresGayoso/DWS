@@ -1,22 +1,19 @@
 <?php
-error_reporting(0);
-include_once "../Modelo/SignUpModelo.php";
-
-$sigin = new SignUp();
 
 if (isset($_POST["usuario"]) && isset($_POST["email"]) && isset($_POST["contra1"]) && isset($_POST["contra2"])) {
     if (strlen($_POST["usuario"]) < 25) {
         if (strlen($_POST["email"]) < 50) {
             if($_POST["contra1"] == $_POST["contra2"]){
-                $passwdHash = password_hash($_POST["contra1"],PASSWORD_DEFAULT);
-                if($sigin->insertUser($_POST["usuario"],$_POST["email"],$passwdHash)){
-                    header("Location: ../Controlador/LogInControlador.php");
+                $file = file_get_contents("http://localhost/Actividades/API's/MVC%20Hoteles%20back-end/Controlador/SignUpControlador.php?user=".$_POST["usuario"]."&email=".$_POST["email"]."&passwd=".$_POST["contra1"]);
+                $signup_json = json_decode($file);
+                if ($signup_json->result){
+                    echo "funciona";
                 }else{
-                    echo ("
-                    <script>
-                        window.alert('El usuario ya esta registrado');
-                    </script>
-                    ");
+                    echo ('
+                <script>
+                    window.alert("'.$signup_json->error.'");
+                </script>
+                ');
                 }
             }else{
                 echo ("

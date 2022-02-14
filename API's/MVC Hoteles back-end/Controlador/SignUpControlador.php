@@ -1,45 +1,24 @@
 <?php
-error_reporting(0);
+
 include_once "../Modelo/SignUpModelo.php";
 
-$sigin = new SignUp();
+$return = array();
+$result = false;
+$error = "";
 
-if (isset($_GET["usuario"]) && isset($_GET["email"]) && isset($_GET["contra1"]) && isset($_GET["contra2"])) {
-    if (strlen($_GET["usuario"]) < 25) {
-        if (strlen($_GET["email"]) < 50) {
-            if($_GET["contra1"] == $_GET["contra2"]){
-                $passwdHash = password_hash($_GET["contra1"],PASSWORD_DEFAULT);
-                if($sigin->insertUser($_GET["usuario"],$_GET["email"],$passwdHash)){
-                    header("Location: ../Controlador/LogInControlador.php");
-                }else{
-                    echo ("
-                    <script>
-                        window.alert('El usuario ya esta registrado');
-                    </script>
-                    ");
-                }
-            }else{
-                echo ("
-                <script>
-                    window.alert('Las contraseñas no coinciden');
-                </script>
-                ");
-            }
-        } else {
-            echo("
-            <script>
-                window.alert('El email no debe pasar de 50 caracteres');
-            </script>
-            ");
-        }
-    } else {
-        echo("
-        <script>
-            window.alert('El nombre de usuario no debe pasar de 25 caracteres');
-        </script>
-        ");
+if (isset($_GET["user"]) && isset($_GET["email"]) && isset($_GET["passwd"])){
+    $signup = new SignUp();
+    $passwdHash = password_hash($_GET["passwd"],PASSWORD_DEFAULT);
+    if ($signup->insertUser($_GET["user"],$_GET["email"],$passwdHash)){
+        $result = true;
+    }else{
+        $error = "El usuario esta registrado";
     }
-
+}else{
+    $error = "El registro ha fallado";
 }
 
-include_once "../Vista/SignUpVista.php";
+$return["result"] = $result;
+$return["error"] = $error;
+
+echo json_encode($return);
