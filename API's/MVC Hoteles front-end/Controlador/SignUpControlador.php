@@ -4,7 +4,9 @@ if (isset($_POST["usuario"]) && isset($_POST["email"]) && isset($_POST["contra1"
     if (strlen($_POST["usuario"]) < 25) {
         if (strlen($_POST["email"]) < 50) {
             if($_POST["contra1"] == $_POST["contra2"]){
-                $file = file_get_contents("http://localhost/Actividades/API's/MVC%20Hoteles%20back-end/Controlador/SignUpControlador.php?user=".$_POST["usuario"]."&email=".$_POST["email"]."&passwd=".$_POST["contra1"]);
+                $file = file_get_contents("http://localhost/API's/MVC%20Hoteles%20back-end/Controlador/SignUpControlador.php?user=".$_POST["usuario"]."&email=".$_POST["email"]."&passwd=".$_POST["contra1"]);
+                // Casa http://localhost/API's/MVC%20Hoteles%20back-end/Controlador/SignUpControlador.php
+                // Clase http://localhost/Actividades/API's/MVC%20Hoteles%20back-end/Controlador/SignUpControlador.php
                 $signup_json = json_decode($file);
                 if ($signup_json->result){
                     echo "funciona";

@@ -23,6 +23,6 @@ class LogIn
                 return new Usuario($result["id"],$result["usuario"],$result["email"]);
             }
         }
-        return false;
+        return new Usuario(0,"-","-");
     }
 }

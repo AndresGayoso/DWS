@@ -2,15 +2,18 @@
 
 if(isset($_GET["HotelId"])){
     $HotelSeleccionado = $_GET["HotelId"];
-    $file = file_get_contents("http://localhost/Actividades/API's/MVC%20Hoteles%20back-end/Controlador/listaControlador.php?HotelId=".$HotelSeleccionado);
+    $file = file_get_contents("http://localhost/API's/MVC%20Hoteles%20back-end/Controlador/listaControlador.php?HotelId=".$HotelSeleccionado);
+    // Casa http://localhost/API's/MVC%20Hoteles%20back-end/Controlador/listaControlador.php
+    // Clase http://localhost/Actividades/API's/MVC%20Hoteles%20back-end/Controlador/listaControlador.php
 }else{
-    $file = file_get_contents("http://localhost/Actividades/API's/MVC%20Hoteles%20back-end/Controlador/listaControlador.php");
+    $file = file_get_contents("http://localhost/API's/MVC%20Hoteles%20back-end/Controlador/listaControlador.php");
 }
 
 $json = json_decode($file);
 
 $hoteles = $json->Hoteles;
 
+$HotelId = "";
 $HotelSeleccionado = "";
 $Latitud = "40.1913498";
 $Longitud = "-3.7937488";

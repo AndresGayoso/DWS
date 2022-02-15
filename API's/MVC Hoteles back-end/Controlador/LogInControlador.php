@@ -2,23 +2,24 @@
 
 include_once "../Modelo/LogInModelo.php";
 
-if(isset($_POST["txtUser"]) && isset($_POST["password"])){
+$return = array();
+$result = false;
+$error = "";
+
+if(isset($_GET["user"]) && isset($_GET["password"])){
     $login = new LogIn();
-    $usuario = $login->CheckUser($_POST["txtUser"],$_POST["password"]);
-    if ($usuario){
-        session_start();
-        $_SESSION["LogIn"] = true;
-        $_SESSION["userId"] = $usuario->getId();
-        $_SESSION["user"] = $usuario->getUsuario();
-        header("Location: ../Controlador/listaControlador.php");
+    $usuario = $login->CheckUser($_GET["user"],$_GET["password"]);
+    if ($usuario->getId() > 0){
+        $result = true;
+        $return["usuario"] = $usuario;
     }else{
-        echo ("
-        <script>
-            window.alert('El usuario/email o contraseña son incorrectas');
-        </script>
-        ");
+        $error = "El usuario o la contraseña son incorrectas";
     }
+}else{
+    $error = "El login ha fallado";
 }
 
+$return["result"] = $result;
+$return["error"] = $error;
 
-include_once "../Vista/LogInVista.php";
+echo json_encode($return);
