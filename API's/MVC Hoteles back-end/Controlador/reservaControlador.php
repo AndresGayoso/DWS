@@ -2,25 +2,28 @@
 
 include_once "../Modelo/reservaModelo.php";
 
-$reserva = new reservaModelo();
+$return = array();
+$result = false;
+$error = "";
+$info = "";
 
-session_start();
-
-if(isset($_POST["email"]) && isset($_POST["entrada"]) && isset($_POST["salida"])){
-    if($reserva->ComprobarReserva($_POST["entrada"], $_POST["salida"], $_GET["HabitacionId"]) == false){
-        $reserva->InsertarReserva($_SESSION["userId"],$_GET["HabitacionId"],$_POST["entrada"],$_POST["salida"]);
-        echo ("
-        <script>
-            window.alert('Su resereva se realizo correctamente');
-        </script>
-        ");
+if(isset($_GET["user"]) && isset($_GET["email"]) && isset($_GET["entrada"]) && isset($_GET["salida"]) && isset($_GET["HabitacionId"])){
+    $reserva = new reservaModelo();
+    if($reserva->ComprobarReserva($_GET["entrada"], $_GET["salida"], $_GET["HabitacionId"]) == false){
+        if($reserva->InsertarReserva($_GET["user"],$_GET["HabitacionId"],$_GET["entrada"],$_GET["salida"])){
+            $result = true;
+            $info = "La reserva se ha hecho correctamente";
+        }else{
+            $error = "Hubo un error en la reserva";
+        }
     }else{
-        echo ("
-        <script>
-            window.alert('Esta habitacion esta reservada entre estas fechas');
-        </script>
-        ");
+        $error = "La habitacion ya esta reservada esas fechas";
     }
+}else{
+    $error = "Hubo un fallo en los datos";
 }
+$return["info"] = $info;
+$return["result"] = $result;
+$return["error"] = $error;
 
-include_once "../Vista/reservaVista.php";
+echo json_encode($return);

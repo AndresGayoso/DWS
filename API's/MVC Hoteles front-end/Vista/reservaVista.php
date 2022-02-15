@@ -29,7 +29,7 @@
 
 <body>
 <a class="btn btn-primary float-left ml-3" href="../Controlador/singleHotelControlador.php?HotelId=<?php echo $_GET["HotelId"] ?>" role="button">Volver</a>
-<?php if($_SESSION["LogIn"] == true) {?>
+<?php if(isset($_SESSION["LogIn"])) {?>
 <div class="dropdown">
     <a class="mr-2 btn btn-primary dropdown-toggle float-right text-capitalize" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <?php echo $_SESSION["user"] ?>
@@ -59,7 +59,7 @@
                     <label for="inputName">Salida:</label>
                     <input type="date" name="salida" class="form-control" placeholder="Confirm Password" required>
                 </div>
-                <?php if($_SESSION["LogIn"] == true) {?>
+                <?php if(isset($_SESSION["LogIn"])) {?>
                     <div class="form-group col-lg-10">
                         <button class="btn btn-primary btn-lg w-100">Reservar</button>
                     </div>

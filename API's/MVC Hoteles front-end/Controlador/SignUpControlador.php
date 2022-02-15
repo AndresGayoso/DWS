@@ -9,7 +9,7 @@ if (isset($_POST["usuario"]) && isset($_POST["email"]) && isset($_POST["contra1"
                 // Clase http://localhost/Actividades/API's/MVC%20Hoteles%20back-end/Controlador/SignUpControlador.php
                 $signup_json = json_decode($file);
                 if ($signup_json->result){
-                    echo "funciona";
+                    header("Location: ../Controlador/LogInControlador.php");
                 }else{
                     echo ('
                 <script>

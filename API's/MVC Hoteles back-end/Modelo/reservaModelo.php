@@ -34,8 +34,12 @@ class reservaModelo
         $sql = 'insert into MVC_Reservas (id_usuario,id_habitacion,entrada,salida) values 
                 ("'.$usuario.'","'.$id_habitacion.'","'.$entrada.'","'.$salida.'")';
         $this->db->conexion();
-        $this->db->query($sql);
+        $query = $this->db->query($sql);
         $this->db->close();
+        if ($query){
+            return true;
+        }
+        return false;
     }
 
 
