@@ -2,4 +2,4 @@
 session_start();
 session_unset();
 session_destroy();
-header("Location: ../Controlador/listaControlador.php");
+header("Location: ../Controlador/loginControlador.php");
