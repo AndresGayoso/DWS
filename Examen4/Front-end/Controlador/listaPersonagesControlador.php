@@ -15,6 +15,6 @@ if(isset($_GET["personage"])&&isset($_GET["localizacion"])){
 }
 
 $characters = $lista->personages;
-$episodes = $lista->episodios;
+$locations = $lista->locations;
 
 include_once "../Vista/listaPersonages.php";

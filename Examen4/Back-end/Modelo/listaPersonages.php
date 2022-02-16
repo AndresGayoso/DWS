@@ -3,6 +3,7 @@
 include_once "../DB/db.php";
 include_once "../Clases/Caracter.php";
 include_once "../Clases/Episodio.php";
+include_once  "../Clases/Location.php";
 
 class listaPersonages
 {
@@ -48,14 +49,14 @@ class listaPersonages
         return $return;
     }
 
-    public function getAllEpisodes(){
-        $sql = 'SELECT id,name from episodes;';
+    public function getAllLocations(){
+        $sql = 'SELECT id,name from locations;';
         $this->db->conexion();
         $query = $this->db->query($sql);
         $this->db->close();
         $return = array();
         while($row = $query->fetch_assoc()){
-            $return[] = new Episodio($row["id"],$row["name"]);
+            $return[] = new Location($row["id"],$row["name"]);
         }
         return $return;
     }

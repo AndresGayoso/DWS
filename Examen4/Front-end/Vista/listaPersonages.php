@@ -16,8 +16,8 @@
         <?php } ?>
     </select>
     <select name="localizacion">
-        <?php foreach ($episodes as $epi) { ?>
-            <option value="<?php echo $epi->id ?>"><?php echo $epi->name ?></option>
+        <?php foreach ($locations as $loc) { ?>
+            <option value="<?php echo $loc->id ?>"><?php echo $loc->name ?></option>
         <?php } ?>
     </select>
     <button type="submit">Cambiar Localizacion</button>
