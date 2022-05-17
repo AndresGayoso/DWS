@@ -1,0 +1,46 @@
+DB hoteles
+
+table Hoteles
+
+id (pk)
+nombre (nombre hotel)
+estrellas (estrellas del hotel (probar con html))
+ubicacion (ciudad)
+calle (nombre de la calle)
+latitud (latitud hotel mapa)
+longitud (longitud hotel mapa)
+hora_entrada (hora a la que cierra)
+hora_salida (hora a la que abre)
+calificacion (nota del hotel)
+telefono (contacto del hotel)
+descripcion (descripion de la zona y de la habitacion)
+
+--------------------------------------------------------
+
+table Multimedia
+
+id (pk)
+Fotos(url)
+tipo (habitacion/hotel)
+id_hotel (fk id hotel)
+
+-------------------------------------------------------
+
+table Servicios (probar ultimo)
+
+id (pk)
+nombre_ser (nombre de los servicios)
+id_hotel (fk id hotel)
+
+-------------------------------------------------------
+
+table habitacion (probar)
+
+id (pk)
+id_hotel (fk id hotel)
+tipo (normal/dobles)
+capacidad (numero de personas recomendado)
+n_baños (numero de baños)
+n_camas (numero de camas)
+m2 (superficie de la habitacion)
+precio (precio)
